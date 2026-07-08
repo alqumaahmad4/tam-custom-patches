@@ -1,0 +1,30 @@
+name: Chore
+description: Track maintenance, tooling, or configuration work.
+title: "[Chore] "
+labels: ["type: chore"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is changing?
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason
+      description: Why now?
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk
+      options:
+        - none
+        - low
+        - medium
+        - high
+    validations:
+      required: true

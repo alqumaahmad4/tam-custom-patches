@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+coverage/
+test-results/
+playwright-report/
+.lighthouseci/
+
+# local caches
+.npm-cache/
+*.tsbuildinfo
+
+# source-of-truth documentation is preserved verbatim
+MASTER_INDEX.md
+PROJECT_RULES.md
+CODEX.md
+IMPLEMENTATION_PLAN.md
+ARCHITECTURE.md
+docs/
