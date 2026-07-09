@@ -51,34 +51,34 @@ If you prefer to set up labels manually:
 2. Click **New label** for each label below
 3. Enter the label name, color, and description
 
-| Label | Color | Description |
-|-------|-------|-------------|
-| `type: feature` | `#1A56DB` | New feature or functionality |
-| `type: bug` | `#DC2626` | Something is broken |
-| `type: performance` | `#7C3AED` | Performance improvement |
-| `type: accessibility` | `#16A34A` | Accessibility improvement or fix |
-| `type: seo` | `#0284C7` | SEO-related change |
-| `type: security` | `#B45309` | Security-related change |
-| `type: chore` | `#64748B` | Maintenance, dependencies, config |
-| `type: docs` | `#94A3B8` | Documentation only |
-| `priority: critical` | `#7F1D1D` | Blocks release. Must be resolved immediately. |
-| `priority: high` | `#DC2626` | Must be in current sprint. |
-| `priority: medium` | `#D97706` | Should be in current sprint. |
-| `priority: low` | `#64748B` | Nice to have. Next sprint or later. |
-| `effort: XS` | `#DCFCE7` | < 2 hours |
-| `effort: S` | `#D1FAE5` | 2–4 hours |
-| `effort: M` | `#FEF3C7` | 0.5–1 day |
-| `effort: L` | `#FED7AA` | 1–2 days |
-| `effort: XL` | `#FEE2E2` | 3+ days. Consider breaking down. |
-| `milestone: foundation` | `#1A1A2E` | Milestone 1 — Foundation |
-| `milestone: design-system` | `#1A56DB` | Milestone 2 — Design System |
-| `milestone: homepage` | `#7C3AED` | Milestone 4 — Homepage |
-| `milestone: quote-system` | `#16A34A` | Milestone 7 — Quote System |
-| `milestone: production` | `#B45309` | Milestone 20 — Production Launch |
-| `blocked` | `#DC2626` | Issue is blocked by another issue or external dependency |
-| `needs-design` | `#F59E0B` | Requires design decision before implementation |
-| `needs-review` | `#1A56DB` | PR or design is ready for review |
-| `good first issue` | `#16A34A` | Suitable for a new contributor |
+| Label                      | Color     | Description                                              |
+| -------------------------- | --------- | -------------------------------------------------------- |
+| `type: feature`            | `#1A56DB` | New feature or functionality                             |
+| `type: bug`                | `#DC2626` | Something is broken                                      |
+| `type: performance`        | `#7C3AED` | Performance improvement                                  |
+| `type: accessibility`      | `#16A34A` | Accessibility improvement or fix                         |
+| `type: seo`                | `#0284C7` | SEO-related change                                       |
+| `type: security`           | `#B45309` | Security-related change                                  |
+| `type: chore`              | `#64748B` | Maintenance, dependencies, config                        |
+| `type: docs`               | `#94A3B8` | Documentation only                                       |
+| `priority: critical`       | `#7F1D1D` | Blocks release. Must be resolved immediately.            |
+| `priority: high`           | `#DC2626` | Must be in current sprint.                               |
+| `priority: medium`         | `#D97706` | Should be in current sprint.                             |
+| `priority: low`            | `#64748B` | Nice to have. Next sprint or later.                      |
+| `effort: XS`               | `#DCFCE7` | < 2 hours                                                |
+| `effort: S`                | `#D1FAE5` | 2–4 hours                                                |
+| `effort: M`                | `#FEF3C7` | 0.5–1 day                                                |
+| `effort: L`                | `#FED7AA` | 1–2 days                                                 |
+| `effort: XL`               | `#FEE2E2` | 3+ days. Consider breaking down.                         |
+| `milestone: foundation`    | `#1A1A2E` | Milestone 1 — Foundation                                 |
+| `milestone: design-system` | `#1A56DB` | Milestone 2 — Design System                              |
+| `milestone: homepage`      | `#7C3AED` | Milestone 4 — Homepage                                   |
+| `milestone: quote-system`  | `#16A34A` | Milestone 7 — Quote System                               |
+| `milestone: production`    | `#B45309` | Milestone 20 — Production Launch                         |
+| `blocked`                  | `#DC2626` | Issue is blocked by another issue or external dependency |
+| `needs-design`             | `#F59E0B` | Requires design decision before implementation           |
+| `needs-review`             | `#1A56DB` | PR or design is ready for review                         |
+| `good first issue`         | `#16A34A` | Suitable for a new contributor                           |
 
 ## Label Usage Guidelines
 
