@@ -30,9 +30,12 @@ describe("homepage foundation", () => {
     expect(blogPreviewArticles).toHaveLength(3);
   });
 
-  it("renders the scoped homepage sections without hero or product-page content", () => {
+  it("renders the scoped homepage sections with the premium hero foundation", () => {
     render(<Home />);
 
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Custom Patches Made Easy" }),
+    ).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Trust signals" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "What can we make for you?" })).toBeInTheDocument();
     expect(

@@ -8,10 +8,12 @@ import { IndustriesServed } from "@/features/homepage/components/industries-serv
 import { SimpleProcess } from "@/features/homepage/components/simple-process";
 import { TestimonialsPreview } from "@/features/homepage/components/testimonials-preview";
 import { WhyChooseUs } from "@/features/homepage/components/why-choose-us";
+import { HeroSlider } from "@/features/homepage/hero";
 
 export function HomepageFoundation() {
   return (
     <>
+      <HeroSlider />
       <AnnouncementTrustBar />
       <FeaturedCategories />
       <WhyChooseUs />
