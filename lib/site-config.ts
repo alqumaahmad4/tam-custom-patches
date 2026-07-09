@@ -14,6 +14,7 @@ export const routes = {
   martialArts: "/martial-arts",
   accessories: "/accessories",
   gallery: "/gallery",
+  blog: "/blog",
   about: "/about",
   contact: "/contact",
   privacy: "/privacy",

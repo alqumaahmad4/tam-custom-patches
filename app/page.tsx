@@ -1,16 +1,42 @@
+import type { Metadata } from "next";
+
+import { HomepageFoundation } from "@/features/homepage";
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: `Custom Manufacturing Homepage - ${siteConfig.name}`,
+  },
+  description:
+    "Premium custom patches, apparel, uniforms, keychains, scout products, and stickers with free artwork support and worldwide shipping.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description:
+      "Explore premium custom manufacturing categories, process, industries, gallery previews, FAQs, and quote request paths.",
+    url: "/",
+    images: [
+      {
+        url: "/logos/logo.png",
+        width: 3088,
+        height: 330,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description:
+      "Premium custom manufacturing for patches, apparel, uniforms, keychains, scout products, and stickers.",
+    images: ["/logos/logo.png"],
+  },
+};
+
+export const revalidate = 60;
+
 export default function Home() {
-  return (
-    <section className="min-h-svh px-6 py-12">
-      <section aria-labelledby="foundation-title" className="mx-auto max-w-3xl">
-        <p className="text-muted-foreground mb-3 text-sm font-medium">Milestone 1</p>
-        <h1 id="foundation-title" className="text-4xl font-bold tracking-tight">
-          Foundation & Repository Setup
-        </h1>
-        <p className="text-muted-foreground mt-4 text-base leading-7">
-          The application shell is ready for the next milestone. Feature pages and launch content
-          are intentionally out of scope for this placeholder.
-        </p>
-      </section>
-    </section>
-  );
+  return <HomepageFoundation />;
 }
