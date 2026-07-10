@@ -10,7 +10,14 @@
 
   html {
     font-family: var(--font-family-sans);
+    scroll-padding-top: calc(var(--space-16) + var(--space-4));
     text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: calc(var(--space-20) + var(--space-4));
+    }
   }
 
   body {

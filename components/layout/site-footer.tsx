@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 import { FooterWordmark } from "@/components/layout/brand-logo";
-import { footerNavigation, siteConfig } from "@/lib/site-config";
+import { footerNavigation } from "@/lib/navigation";
+import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
   return (

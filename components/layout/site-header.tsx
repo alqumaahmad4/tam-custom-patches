@@ -3,21 +3,31 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Search } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { CountrySelector } from "@/components/navigation/country-selector";
+import { DesktopMegaMenu } from "@/components/navigation/desktop-mega-menu";
+import { SearchOverlay } from "@/components/navigation/search-overlay";
 import { Button } from "@/components/ui/button";
-import { primaryNavigation, routes, tabletNavigation } from "@/lib/site-config";
+import { tabletNavigation } from "@/lib/navigation";
+import { routes } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 const quoteDescriptionId = "header-quote-description";
+
+function getIsActive(pathname: string, href: string) {
+  return href === "/" ? pathname === href : pathname.startsWith(href);
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const isHome = pathname === routes.home;
-  const isSolid = !isHome || isScrolled || mobileOpen;
+  const isSolid = !isHome || isScrolled || mobileOpen || searchOpen;
 
   useEffect(() => {
     const updateScrolled = () => setIsScrolled(window.scrollY > 80);
@@ -45,47 +55,58 @@ export function SiteHeader() {
           <BrandLogo priority imageClassName="h-7 max-w-[180px] sm:h-8 sm:max-w-[220px] lg:h-10" />
         </div>
 
-        <nav aria-label="Main navigation" className="hidden flex-1 justify-center lg:flex">
-          <ul className="flex items-center gap-8">
-            {primaryNavigation.map((item) => {
-              const isActive = pathname.startsWith(item.href);
-
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={isActive ? "page" : undefined}
-                    className={cn(
-                      "hover:text-primary rounded-sm text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none",
-                      isActive
-                        ? "text-foreground underline underline-offset-8"
-                        : "text-foreground/85",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <DesktopMegaMenu pathname={pathname} isSolid={isSolid} />
 
         <nav
           aria-label="Tablet navigation"
           className="hidden flex-1 justify-center gap-5 md:flex lg:hidden"
         >
-          {tabletNavigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-foreground/85 hover:text-primary rounded-sm text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {tabletNavigation.map((item) => {
+            const isActive = getIsActive(pathname, item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "hover:text-primary rounded-sm text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none",
+                  isActive ? "font-semibold underline underline-offset-8" : "text-foreground/85",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2 lg:flex-[0_0_auto]">
+          <CountrySelector isSolid={isSolid} />
+          <button
+            type="button"
+            aria-label="Open search"
+            className={cn(
+              "grid size-10 place-items-center rounded-full transition-colors duration-150 focus-visible:outline-none",
+              isSolid
+                ? "text-foreground/80 hover:bg-secondary hover:text-primary"
+                : "text-surface/90 hover:bg-surface/10 hover:text-surface",
+            )}
+            onClick={() => setSearchOpen(true)}
+          >
+            <Search aria-hidden="true" className="size-5" />
+          </button>
+          <Button
+            asChild
+            variant="ghost"
+            className={cn(
+              "hidden h-10 rounded-full px-4 lg:inline-flex",
+              isSolid
+                ? "text-foreground hover:text-primary"
+                : "text-surface hover:bg-surface/10 hover:text-surface",
+            )}
+          >
+            <Link href={routes.aiDesigner}>AI Designer</Link>
+          </Button>
           <span id={quoteDescriptionId} className="sr-only">
             Get a free custom patch quote.
           </span>
@@ -98,6 +119,7 @@ export function SiteHeader() {
           <MobileNav open={mobileOpen} onOpenChange={setMobileOpen} />
         </div>
       </div>
+      <SearchOverlay open={searchOpen} onOpenChange={setSearchOpen} />
     </header>
   );
 }

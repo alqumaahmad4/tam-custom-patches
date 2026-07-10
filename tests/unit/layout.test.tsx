@@ -4,10 +4,14 @@ import { describe, expect, it, vi } from "vitest";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
-import { primaryNavigation, routes } from "@/lib/site-config";
+import { navigationGroups } from "@/lib/navigation";
+import { routes } from "@/lib/site-config";
 
 vi.mock("next/navigation", () => ({
   usePathname: () => routes.home,
+  useRouter: () => ({
+    push: vi.fn(),
+  }),
 }));
 
 vi.mock("next/image", () => ({
@@ -18,13 +22,13 @@ vi.mock("next/image", () => ({
 
 describe("global layout foundation", () => {
   it("keeps the documented primary navigation labels", () => {
-    expect(primaryNavigation.map((item) => item.label)).toEqual([
+    expect(navigationGroups.map((item) => item.label)).toEqual([
       "Custom Patches",
-      "Apparel",
-      "Martial Arts",
+      "Custom Apparel",
+      "Martial Arts Uniforms & Gear",
       "Accessories",
-      "Gallery",
-      "About",
+      "Industries",
+      "Resources",
     ]);
   });
 

@@ -9,67 +9,55 @@ export const siteConfig = {
 export const routes = {
   home: "/",
   quote: "/quote",
+  reorder: "/quote?intent=reorder",
+  aiDesigner: "/ai-designer",
   customPatches: "/custom-patches",
+  embroideredPatches: "/custom-patches/embroidered",
+  pvcPatches: "/custom-patches/pvc",
+  wovenPatches: "/custom-patches/woven",
+  chenillePatches: "/custom-patches/chenille",
+  printedPatches: "/custom-patches/printed",
+  velcroPatches: "/custom-patches/velcro",
   apparel: "/apparel",
+  tshirts: "/apparel/t-shirts",
+  hoodies: "/apparel/hoodies",
+  crewnecks: "/apparel/crewnecks",
+  sweatshirts: "/apparel/sweatshirts",
+  poloShirts: "/apparel/polo-shirts",
+  tankTops: "/apparel/tank-tops",
+  jerseys: "/apparel/jerseys",
+  activewear: "/apparel/activewear",
   martialArts: "/martial-arts",
+  bjjGis: "/martial-arts/bjj-gis",
+  karateUniforms: "/martial-arts/karate-uniforms",
+  taekwondoUniforms: "/martial-arts/taekwondo-uniforms",
+  judoUniforms: "/martial-arts/judo-uniforms",
+  martialArtsTrainingApparel: "/martial-arts/training-apparel",
   accessories: "/accessories",
+  scoutNeckerchiefs: "/accessories/scout-neckerchiefs",
+  embroideredKeychains: "/accessories/embroidered-keychains",
+  pvcKeychains: "/accessories/pvc-keychains",
+  stickers: "/accessories/stickers",
+  industries: "/industries",
+  militaryIndustry: "/industries/military",
+  lawEnforcementIndustry: "/industries/law-enforcement",
+  sportsTeamsIndustry: "/industries/sports-teams",
+  schoolsIndustry: "/industries/schools-universities",
+  scoutGroupsIndustry: "/industries/scout-groups",
+  motorcycleClubsIndustry: "/industries/motorcycle-clubs",
+  fashionBrandsIndustry: "/industries/fashion-brands",
+  workwearIndustry: "/industries/workwear",
+  eventsIndustry: "/industries/events",
+  martialArtsClubsIndustry: "/industries/martial-arts-clubs",
   gallery: "/gallery",
   blog: "/blog",
+  sizeGuide: "/resources/size-guide",
+  faq: "/faq",
+  shipping: "/shipping",
   about: "/about",
   contact: "/contact",
   privacy: "/privacy",
   terms: "/terms",
   accessibility: "/accessibility",
+  sitemap: "/sitemap",
 } as const;
-
-export const primaryNavigation = [
-  { label: "Custom Patches", href: routes.customPatches },
-  { label: "Apparel", href: routes.apparel },
-  { label: "Martial Arts", href: routes.martialArts },
-  { label: "Accessories", href: routes.accessories },
-  { label: "Gallery", href: routes.gallery },
-  { label: "About", href: routes.about },
-] as const;
-
-export const tabletNavigation = [
-  primaryNavigation[0],
-  primaryNavigation[1],
-  { label: "Quote", href: routes.quote },
-] as const;
-
-export const footerNavigation = [
-  {
-    title: "Products",
-    links: [
-      { label: "Custom Patches", href: routes.customPatches },
-      { label: "Custom Apparel", href: routes.apparel },
-      { label: "Martial Arts", href: routes.martialArts },
-      { label: "Accessories", href: routes.accessories },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Gallery", href: routes.gallery },
-      { label: "Get Free Quote", href: routes.quote },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: routes.about },
-      { label: "Contact", href: routes.contact },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Privacy Policy", href: routes.privacy },
-      { label: "Terms of Service", href: routes.terms },
-      { label: "Accessibility", href: routes.accessibility },
-    ],
-  },
-] as const;
-
-export type NavigationItem = (typeof primaryNavigation)[number];
-export type FooterNavigationGroup = (typeof footerNavigation)[number];
