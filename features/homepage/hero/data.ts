@@ -66,7 +66,7 @@ export const heroSlides = [
     description:
       "Premium embroidered, PVC, woven, chenille, printed, and velcro patch programs with artwork support before production.",
     primaryCta: {
-      label: "Get Free Patch Quote",
+      label: "Get a Quote",
       href: routes.quote,
     },
     secondaryCta: {
@@ -85,7 +85,7 @@ export const heroSlides = [
     description:
       "Structured apparel requests for teamwear, uniforms, promotional garments, and branded programs that need a polished finish.",
     primaryCta: {
-      label: "Start Apparel Request",
+      label: "Get a Quote",
       href: routes.quote,
     },
     secondaryCta: {
@@ -104,7 +104,7 @@ export const heroSlides = [
     description:
       "Premium uniforms, belts, patches, and academy-ready details prepared for schools, teams, events, and training programs.",
     primaryCta: {
-      label: "Request Uniform Quote",
+      label: "Get a Quote",
       href: routes.quote,
     },
     secondaryCta: {

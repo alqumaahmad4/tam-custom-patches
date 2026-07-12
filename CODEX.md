@@ -115,7 +115,7 @@ Phase order:
 5. Hero Sliders
 6. Quote Wizard
 7. Product Pages
-8. AI Patch Designer
+8. AI Design Studio
 9. CMS/Admin
 10. Analytics
 11. SEO
@@ -298,7 +298,7 @@ Reduce friction wherever possible.
 
 ---
 
-# AI Patch Designer
+# AI Design Studio
 
 Build as a premium product.
 
@@ -446,7 +446,7 @@ Homepage architecture
 
 Quote flow
 
-AI Designer workflow
+AI Design Studio workflow
 
 SEO architecture
 

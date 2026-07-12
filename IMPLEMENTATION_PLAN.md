@@ -82,7 +82,7 @@ Working quote experience.
 
 ---
 
-## Phase 6 — AI Patch Designer
+## Phase 6 — AI Design Studio
 
 Build:
 
@@ -93,7 +93,7 @@ Build:
 - Quote integration
 
 Deliverable:
-Functional AI Designer interface.
+Functional AI Design Studio interface.
 
 ---
 
@@ -202,7 +202,7 @@ Validate:
 - Cross-browser compatibility
 - Responsive layouts
 - Quote flow
-- AI Designer
+- AI Design Studio
 - Forms
 - Performance
 - SEO

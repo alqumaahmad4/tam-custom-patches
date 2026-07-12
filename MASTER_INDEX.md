@@ -181,7 +181,7 @@ This document tells AI coding agents:
 | Mega Menu | V2 | V3 |
 | Product Pages | V1 | V2, V3 |
 | Quote Wizard | V4 | V2, V1 |
-| AI Patch Designer | V4 | V2, V3 |
+| AI Design Studio | V4 | V2, V3 |
 | Gallery | V2 | V3 |
 | Blog | V2 | V1 |
 | Industries | V1 | V2 |

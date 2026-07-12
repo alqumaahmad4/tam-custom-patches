@@ -212,7 +212,7 @@ export const faqItems = [
     answer:
       "Start with the product type, estimated quantity, and any design notes so the request has the right context.",
     cta: {
-      label: "Request a free quote",
+      label: "Get a Quote",
       href: routes.quote,
     },
   },

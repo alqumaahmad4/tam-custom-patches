@@ -8,7 +8,7 @@ export function QuoteWizardPage() {
       <div className="mx-auto max-w-[var(--container-xl)] px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
         <header className="mb-8 max-w-3xl">
           <p className="text-primary text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase">
-            Get a free quote
+            Get a Quote
           </p>
           <h1 className="mt-3 text-4xl font-bold">Build your custom quote</h1>
           <p className="text-muted-foreground mt-4 text-lg">

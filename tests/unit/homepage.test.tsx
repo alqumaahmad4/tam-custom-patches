@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import Home from "@/app/page";
@@ -80,10 +80,14 @@ describe("homepage foundation", () => {
       expect(screen.getByRole("button", { name: item.question })).toBeInTheDocument();
     }
 
-    expect(screen.getByRole("link", { name: /start a free quote/i })).toHaveAttribute(
-      "href",
-      "/quote",
-    );
+    const finalCta = screen
+      .getByRole("heading", { name: "Ready to shape your custom manufacturing request?" })
+      .closest("section");
+
+    expect(finalCta).not.toBeNull();
+    expect(
+      within(finalCta as HTMLElement).getByRole("link", { name: "Get a Quote" }),
+    ).toHaveAttribute("href", "/quote");
     expect(screen.getByRole("link", { name: /talk to support/i })).toHaveAttribute(
       "href",
       "/contact",

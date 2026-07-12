@@ -243,7 +243,7 @@ function buildDesignBible() {
     bullet('Declarative, not explanatory  —  "Ships worldwide in 7–14 days." Not "We offer worldwide shipping with typical delivery in 7–14 days."'),
     bullet('Specific, not vague  —  "150+ thread colors." Not "a wide range of colors."'),
     bullet('Active, not passive  —  "We manufacture every patch." Not "Every patch is manufactured."'),
-    bullet('Direct, not flowery  —  "Get a free quote." Not "Embark on your patch journey."'),
+    bullet('Direct, not flowery  —  "Get a Quote." Not "Embark on your patch journey."'),
     bullet('Humble confidence  —  "Trusted by 5,000+ brands." Not "The world\'s greatest patch maker."'),
     spacer(),
     h3('Tone by Context'),
@@ -342,7 +342,7 @@ function buildDesignBible() {
     h3('Font Stack'),
     kvTbl([
       ['Primary typeface',  'Inter — loaded via next/font/google with latin subset. Zero layout shift.'],
-      ['Monospace',         'JetBrains Mono — used exclusively for code snippets and file names in the AI Designer.'],
+      ['Monospace',         'JetBrains Mono — used exclusively for code snippets and file names in the AI Design Studio.'],
       ['System fallback',   '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'],
       ['Font loading',      'display: swap on all fonts. Subset to latin characters only for Phase 1.'],
     ]),
@@ -718,7 +718,7 @@ function buildComponentLibrary() {
     body('Single row, 80px tall. Three zones left/center/right. Container: --container-xl max-width, centered, 40px horizontal padding.'),
     bullet('Left zone (240px): Wordmark logo SVG, links to /'),
     bullet('Center zone (flex grow): Primary nav links with 32px gaps — "Custom Patches" / "Apparel" / "Martial Arts" / "Accessories" / "Gallery" / "About"'),
-    bullet('Right zone (auto): Country selector icon → Search icon → "AI Designer" ghost button → "Get Free Quote" primary button'),
+    bullet('Right zone (auto): Country selector icon → Search icon → "AI Design Studio" ghost button → "Get a Quote" primary button'),
     spacer(),
     h3('Tablet Layout (768–1023px)'),
     body('Collapses center nav. Right zone shows only hamburger icon + "Get Quote" button.'),
@@ -764,7 +764,7 @@ function buildComponentLibrary() {
     h3('Column Layout'),
     bullet('Column 1 (300px): List of sub-product links with 40px icon + label. Each link has a hover underline and arrow.'),
     bullet('Column 2 (260px): "By Industry" quick links with industry names only'),
-    bullet('Column 3 (220px): Resources + Tools CTAs — "Get Free Quote" (primary button), "AI Designer", "Size Guide", "Gallery"'),
+    bullet('Column 3 (220px): Resources + Tools CTAs — "Get a Quote" (primary button), "AI Design Studio", "Size Guide", "Gallery"'),
     bullet('Optional: Far right (200px): A featured image panel showing a rotating gallery of product photography — desktop only'),
     spacer(),
     h3('Mobile Behavior'),
@@ -799,7 +799,7 @@ function buildComponentLibrary() {
       ['Background',    'White'],
       ['Animation',     'translateX 100%→0, 300ms spring-standard. Overlay: opacity 0→0.5, 300ms ease-out.'],
       ['Close trigger', 'X button top-right, backdrop tap, Escape key, swipe-right gesture (> 80px displacement)'],
-      ['Structure',     'Logo at top, accordion nav below, "Get Free Quote" primary button pinned to bottom, country selector'],
+      ['Structure',     'Logo at top, accordion nav below, "Get a Quote" primary button pinned to bottom, country selector'],
       ['Accordion',     'Each primary category is an accordion item. Tap expands to show sub-links. Active category remains open on navigation.'],
       ['Focus trap',    'Focus trapped inside drawer while open (focus-trap-react). Focus returns to hamburger button on close.'],
     ]),
@@ -842,7 +842,7 @@ function buildComponentLibrary() {
     // ── CTA Button ────────────────────────────────────────────────────────────
     h2('13.7 CTA Button — Primary'),
     h3('Purpose'),
-    body('The single most important UI element on the site. Every primary action — "Get Free Quote," "Start Your Order," "Request a Quote" — uses this button. It must be visually distinct from all other elements at every viewport size.'),
+    body('The single most important UI element on the site. Every primary action — "Get a Quote" and related lead CTAs — uses this button. It must be visually distinct from all other elements at every viewport size.'),
     spacer(),
     tbl(
       ['Property', 'Value'],
@@ -869,7 +869,7 @@ function buildComponentLibrary() {
     // ── Secondary & Ghost Buttons ─────────────────────────────────────────────
     h2('13.8 Secondary Button & Ghost Button'),
     h3('Secondary Button'),
-    body('Used as the second action alongside a primary CTA. Example: "Browse Products" next to "Get Free Quote." Same height as primary, different visual weight.'),
+    body('Used as the second action alongside a primary CTA. Example: "Browse Products" next to "Get a Quote." Same height as primary, different visual weight.'),
     tbl(
       ['Property', 'Value'],
       [2400, 6960],
@@ -1012,7 +1012,7 @@ function buildComponentLibrary() {
 
     // ── AI Prompt Input ───────────────────────────────────────────────────────
     h2('13.17 AI Prompt Input'),
-    body('The natural-language text input in the AI Patch Designer. Styled to feel premium and intentional — not like a standard textarea.'),
+    body('The natural-language text input in the AI Design Studio. Styled to feel premium and intentional — not like a standard textarea.'),
     kvTbl([
       ['Base',           'Rounded rectangle, 100% width, min-height 120px, auto-expand up to 240px. Border: 1.5px solid --color-border. Background: white.'],
       ['Placeholder',    '"Describe your patch idea... e.g. \'A fierce eagle with lightning bolts for a motorcycle club\'" — muted, italic'],
@@ -1090,7 +1090,7 @@ function buildComponentLibrary() {
     // ── Modal ─────────────────────────────────────────────────────────────────
     h2('13.23 Modal Component'),
     h3('Purpose & Variants'),
-    body('Modals are used for: AI Designer save confirmation, review submission, exit intent offer, sample request, and contact quick-form. Never used for primary user flows (those use full pages or drawers).'),
+    body('Modals are used for: AI Design Studio save confirmation, review submission, exit intent offer, sample request, and contact quick-form. Never used for primary user flows (those use full pages or drawers).'),
     kvTbl([
       ['Overlay',        'rgba(0,0,0,0.5), full-viewport, backdrop-filter: blur(4px) — subtle blur behind modal'],
       ['Panel',          'White, --radius-xl, --shadow-xl, max-width: 480px, width: calc(100% - 32px), vertically centered'],
@@ -1200,7 +1200,7 @@ function buildHeroSpec() {
         ['Eyebrow label', 'text-xs uppercase tracked, --color-accent, "WORLDWIDE CUSTOM MANUFACTURING"'],
         ['Headline', '"Custom Patches\\nMade Easy" — text-6xl (clamped), black/white per bg, Inter Bold 800, line-height 1.0, -0.05em tracking. The word "Easy" has an accent-color underline SVG animation.'],
         ['Subline', '"Embroidered · PVC · Woven · Chenille · Printed · Velcro — Ships Worldwide" — text-lg muted, Inter 400'],
-        ['CTA row', '"Get Free Quote" (primary button, large) + "Design Your Patch →" (ghost button on dark bg, or text link on light)'],
+        ['CTA row', '"Get a Quote" (primary button, large) + "Design Your Patch →" (ghost button on dark bg, or text link on light)'],
         ['Trust micro-strip', 'Below CTAs: 3 trust icons in a row — ✓ Free Artwork Revisions · ✓ 7–14 Day Production · ✓ Worldwide Shipping. text-sm, muted white.'],
       ]
     ),
@@ -1318,7 +1318,7 @@ function buildHeroSpec() {
         ['Headline', '"Custom Martial Arts\\nUniforms & Gear" — white, same type scale'],
         ['Subline', '"BJJ Gis · Karate · Taekwondo · Judo — Dojos & Competition Teams"'],
         ['Gold accent', 'A thin 2px gold underline SVG under "Uniforms & Gear" — references the gold belt/rank tradition'],
-        ['CTA row', '"Request a Quote" (primary) + "Browse Uniforms" (ghost button — white outline on dark bg)'],
+        ['CTA row', '"Get a Quote" (primary) + "Browse Uniforms" (ghost button — white outline on dark bg)'],
       ]
     ),
     spacer(),
@@ -1434,16 +1434,16 @@ function buildProductPageSpec() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// SECTION 16 — ADVANCED AI PATCH DESIGNER
+// SECTION 16 — ADVANCED AI DESIGN STUDIO
 // ═══════════════════════════════════════════════════════════════════════════════
 
 function buildAIDesignerSpec() {
   return [
-    h1('16 · ADVANCED AI PATCH DESIGNER'),
+    h1('16 · ADVANCED AI DESIGN STUDIO'),
     sectionLabel('Complete User Flow & Feature Specification'),
 
     h2('16.1 Complete User Flow'),
-    body('The AI Patch Designer is a progressive-enhancement tool. It works in Phase 1 as a configuration UI (no real AI). It upgrades to real AI generation in Phase 2. The user flow is identical in both phases — only the preview result differs.'),
+    body('The AI Design Studio is a progressive-enhancement tool. It works in Phase 1 as a configuration UI (no real AI). It upgrades to real AI generation in Phase 2. The user flow is identical in both phases — only the preview result differs.'),
     spacer(),
     h3('Step-by-Step User Flow'),
     numbered('User arrives at /ai-designer from header CTA, hero CTA, or product page "Design Your Patch" link'),
@@ -1453,7 +1453,7 @@ function buildAIDesignerSpec() {
     numbered('User clicks "Generate Preview" — loading state shows (spinner + "Designing your patch…" text)'),
     numbered('Phase 1: A placeholder preview renders (static pre-designed patch selected by keyword matching). Phase 2: Real AI image displayed.'),
     numbered('User can: Regenerate (new seed), Compare (view 2 versions side by side), Save, Share, or Download Preview'),
-    numbered('"Request Quote" button is always visible — clicking navigates to /quote with all current parameters pre-filled as URL query params'),
+    numbered('"Get a Quote" button is always visible — clicking navigates to /quote with all current parameters pre-filled as URL query params'),
     spacer(),
 
     h2('16.2 Prompt Suggestions System'),
@@ -1506,8 +1506,8 @@ function buildAIDesignerSpec() {
     kvTbl([
       ['Share',          'Generates a shareable URL: /ai-designer?p=[encoded-params]&v=[version-id]. URL encodes all current parameters. On other devices, the page restores the same configuration.'],
       ['Download preview', 'Phase 2: Downloads a 1200×1200px watermarked JPG of the AI-generated preview. Watermark: "Tam Custom Patches — Preview Only" diagonal, 15% opacity.'],
-      ['Social share',   'Share to Twitter/Instagram prepopulates with: "I just designed a custom patch using Tam\'s AI designer! [URL]"'],
-      ['Embed (Phase 3)', 'A <script> embed code for third-party sites to show the AI Designer in an iframe.'],
+      ['Social share',   'Share to Twitter/Instagram prepopulates with: "I just designed a custom patch using Tam\'s AI Design Studio! [URL]"'],
+      ['Embed (Phase 3)', 'A <script> embed code for third-party sites to show the AI Design Studio in an iframe.'],
     ]),
     spacer(),
 
@@ -1618,7 +1618,7 @@ function buildAdvancedQuoteSystem() {
       ['Event Name', 'Trigger', 'Parameters'],
       [2400, 2400, 4560],
       [
-        ['quote_started', 'User clicks any "Get Free Quote" CTA', 'source: (hero/header/product/floating), product: (if pre-filled)'],
+        ['quote_started', 'User clicks any "Get a Quote" CTA', 'source: (hero/header/product/floating), product: (if pre-filled)'],
         ['quote_step_complete', 'User advances from any step', 'step: (1–6), product_type: (string), step_name: (string)'],
         ['quote_artwork_uploaded', 'File successfully uploaded to R2', 'file_type: (ext), file_size_kb: (number)'],
         ['quote_artwork_skipped', 'User clicks "Upload Later"', 'step: 5'],
@@ -1627,7 +1627,7 @@ function buildAdvancedQuoteSystem() {
         ['quote_restored', 'User returns via saved quote URL', 'step: (step they left at), days_since_save: (number)'],
         ['ai_designer_opened', 'User navigates to /ai-designer', 'source: (header/hero/product)'],
         ['ai_prompt_generated', 'User clicks "Generate Preview"', 'prompt_length: (chars), product_type: (string)'],
-        ['ai_quote_requested', 'User clicks "Request Quote" from AI designer', 'has_saved_design: (bool)'],
+        ['ai_quote_requested', 'User clicks "Get a Quote" from AI Design Studio', 'has_saved_design: (bool)'],
       ]
     ),
     spacer(),

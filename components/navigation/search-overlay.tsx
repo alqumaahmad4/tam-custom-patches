@@ -33,7 +33,7 @@ const contentTypes = [
   "Industries",
   "Design & Pricing",
   "Guides & Support",
-  "Company",
+  "About",
   "Blog",
 ] as const satisfies readonly SearchContentType[];
 
@@ -129,7 +129,8 @@ export function SearchOverlay({ open, onOpenChange }: SearchOverlayProps) {
         <div className="mx-auto flex min-h-dvh max-w-[var(--container-xl)] flex-col px-4 pt-24 pb-8 sm:px-6 lg:px-10">
           <DialogTitle className="sr-only">Search Tam Custom Patches</DialogTitle>
           <DialogDescription className="sr-only">
-            Search products, industries, design tools, guides, company pages, and blog articles.
+            Search products, industries, design and pricing, guides and support, about pages, and
+            blog articles.
           </DialogDescription>
 
           <div className="mx-auto w-full max-w-3xl">
@@ -139,7 +140,7 @@ export function SearchOverlay({ open, onOpenChange }: SearchOverlayProps) {
                 ref={inputRef}
                 value={query}
                 type="search"
-                aria-label="Search products, industries, design tools, guides, company pages, and blog"
+                aria-label="Search products, industries, design and pricing, guides and support, about pages, and blog"
                 placeholder="Search for what you need"
                 className="min-h-[52px] flex-1 bg-transparent text-base outline-none"
                 onChange={(event) => setQuery(event.target.value)}

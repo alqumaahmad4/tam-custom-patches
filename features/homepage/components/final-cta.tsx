@@ -25,7 +25,7 @@ export function FinalCta() {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild size="lg" className="rounded-full">
               <Link href={routes.quote}>
-                Start a free quote
+                Get a Quote
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </Button>

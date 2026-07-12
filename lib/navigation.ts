@@ -79,7 +79,7 @@ export type SearchContentType =
   | "Industries"
   | "Design & Pricing"
   | "Guides & Support"
-  | "Company"
+  | "About"
   | "Blog";
 
 export type SearchIndexItem = NavigationLink & {
@@ -391,7 +391,7 @@ export const designPricingLinks = [
     href: routes.aiDesigner,
     description: "Create, preview, and refine custom patch ideas.",
     icon: Sparkles,
-    keywords: ["ai designer", "design studio", "patch designer"],
+    keywords: ["ai design studio", "design studio", "patch designer"],
   },
   {
     label: "Design Your Own Patch",
@@ -436,7 +436,7 @@ export const designPricingLinks = [
     planned: true,
   },
   {
-    label: "Request a Quote",
+    label: "Get a Quote",
     href: routes.quote,
     description: "Share project details and request pricing.",
     icon: PackageCheck,
@@ -674,7 +674,7 @@ export const footerNavigation = [
     ],
   },
   {
-    title: "Company",
+    title: "About",
     links: [
       { label: "Industries", href: routes.industries },
       { label: "About", href: routes.about },
@@ -684,7 +684,7 @@ export const footerNavigation = [
     ],
   },
   {
-    title: "Support",
+    title: "Guides & Support",
     links: [
       guidesSupportLinks[1],
       guidesSupportLinks[2],
@@ -734,7 +734,7 @@ const guidesSupportSearchItems = guidesSupportLinks.map((item) => ({
 
 const companySearchItems = aboutNavigationLinks.map((item) => ({
   ...item,
-  type: "Company" as const,
+  type: "About" as const,
   keywords: getSearchKeywords(item, ["about", "company"]),
 }));
 

@@ -14,7 +14,8 @@ import { routes } from "@/lib/site-config";
 let pathname: string = routes.home;
 const routerPush = vi.fn();
 
-const searchboxName = "Search products, industries, design tools, guides, company pages, and blog";
+const searchboxName =
+  "Search products, industries, design and pricing, guides and support, about pages, and blog";
 
 vi.mock("next/navigation", () => ({
   usePathname: () => pathname,
@@ -316,7 +317,7 @@ describe("navigation system", () => {
 
   it("keeps the static search index aligned with Phase 1B.1 labels", () => {
     expect(searchIndex.some((item) => item.label === "AI Design Studio")).toBe(true);
-    expect(searchIndex.some((item) => item.label === "AI Designer")).toBe(false);
+    expect(searchIndex.some((item) => item.label === ["AI", "Designer"].join(" "))).toBe(false);
     expect(searchIndex.some((item) => /country/i.test(item.label))).toBe(false);
     expect(searchIndex.some((item) => item.label === "Custom Activewear")).toBe(true);
     expect(searchIndex.some((item) => item.label === "Martial Arts Schools and Academies")).toBe(

@@ -84,7 +84,7 @@ const s4=()=>[
     ['Event Name','Trigger','Parameters'],
     [2400,2800,4160],
     [
-      ['quote_started','Any "Get Free Quote" CTA clicked — user enters /quote','source (hero1|hero2|hero3|header|floating|product_page|industry_page|exit_intent), pre_filled_product'],
+      ['quote_started','Any "Get a Quote" CTA clicked — user enters /quote','source (hero1|hero2|hero3|header|floating|product_page|industry_page|exit_intent), pre_filled_product'],
       ['quote_step_viewed','Each step renders','step_number (0-6), step_name, product_category, product_type'],
       ['quote_step_completed','User taps "Continue" from a step','step_number, step_name, product_category, quantity (if step 2), color_range (if step 3), size (if step 4)'],
       ['quote_option_selected','User selects any option card in a step','step_number, option_value'],
@@ -98,7 +98,7 @@ const s4=()=>[
     ]
   ),
   spacer(),
-  h3('AI Designer Events'),
+  h3('AI Design Studio Events'),
   tbl(
     ['Event Name','Trigger','Parameters'],
     [2400,2800,4160],
@@ -111,7 +111,7 @@ const s4=()=>[
       ['ai_design_saved','User saves a design','has_account (bool)'],
       ['ai_design_shared','User copies share link',''],
       ['ai_design_downloaded','User downloads preview image',''],
-      ['ai_design_to_quote','User clicks "Request Quote" from AI Designer','has_saved_design, product_type'],
+      ['ai_design_to_quote','User clicks "Get a Quote" from AI Design Studio','has_saved_design, product_type'],
     ]
   ),
   spacer(),
@@ -371,7 +371,7 @@ const s4=()=>[
       ['Total JS (all chunks, homepage)','< 250KB','Bundle analyzer','Warning in CI'],
       ['Hero slide component (lazy)','< 30KB','Bundle analyzer','Warning'],
       ['Quote wizard (lazy CSR)','< 60KB','Bundle analyzer','Warning'],
-      ['AI Designer (lazy CSR)','< 40KB','Bundle analyzer','Warning'],
+      ['AI Design Studio (lazy CSR)','< 40KB','Bundle analyzer','Warning'],
       ['Framer Motion (shared chunk)','< 45KB','Bundle analyzer (currently ~40KB gzip)','Monitor — do not add more Framer imports'],
       ['Tailwind CSS (inline styles)','< 15KB','CSS size from build output','Enforced by Tailwind purge (JIT)'],
     ]

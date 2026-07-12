@@ -20,7 +20,7 @@ Not implemented in Milestone 1:
 
 - Homepage sections
 - Quote system
-- AI Designer
+- AI Design Studio
 - Product pages
 - Gallery, blog, CMS, admin, analytics, cart, checkout, or payment features
 

@@ -72,8 +72,8 @@ const buildEmptyStates = () => [
   kvTbl([
     ['Illustration',    'An SVG: a blank canvas/artboard with a pencil hovering above it, about to draw. The pencil casts a small shadow. Colors: muted gray palette.'],
     ['Headline',        '"Your designs will appear here."'],
-    ['Subline',         '"Use the AI Patch Designer to create and save custom patch designs. They\'ll be stored here for easy reference."'],
-    ['CTA',             '"Open AI Designer →" — primary button. This is an opportunity to drive a conversion action.'],
+    ['Subline',         '"Use the AI Design Studio to create and save custom patch designs. They\'ll be stored here for easy reference."'],
+    ['CTA',             '"Open AI Design Studio →" — primary button. This is an opportunity to drive a conversion action.'],
     ['Tone',            'Helpful and forward-looking. The visitor has not failed to save designs — they simply have not started yet.'],
   ]),
   spacer(),
@@ -83,7 +83,7 @@ const buildEmptyStates = () => [
     ['Context',         'This state appears in the customer account dashboard (Phase 2) when a logged-in user has no past quote requests.'],
     ['Illustration',    'An SVG: a blank clipboard with a ruler and pencil crossed over it (representing an empty order form).'],
     ['Headline',        '"No quotes yet."'],
-    ['Subline',         '"When you request a free quote, it will appear here. You can track status, reorder, and save details for future projects."'],
+    ['Subline',         '"When you request a quote, it will appear here. You can track status, reorder, and save details for future projects."'],
     ['CTA',             '"Request Your First Quote →" — primary button.'],
   ]),
   spacer(),
@@ -152,7 +152,7 @@ const buildMobileExperience = () => [
     ['Drawer behavior',     'Full-screen. Slides in from right (not left — avoids conflict with iOS left-edge swipe-back gesture). Navigation items are large: 52px touch target height for each item.'],
     ['Thumb zone',          'Primary navigation items (most important destinations) are in the bottom 60% of the drawer height — the easiest thumb reach zone. Secondary links (About, Contact, Legal) are at the top.'],
     ['Sub-menu',            'Expanding accordion within the drawer. Tap category to reveal sub-items. The chevron rotates 90° to indicate expansion. 250ms spring.'],
-    ['Bottom CTA',          '"Get Free Quote" primary button pinned to the bottom of the drawer, 16px from the screen bottom edge. Always visible. Never scrolled away.'],
+    ['Bottom CTA',          '"Get a Quote" primary button pinned to the bottom of the drawer, 16px from the screen bottom edge. Always visible. Never scrolled away.'],
   ]),
   spacer(),
 
@@ -299,7 +299,7 @@ const buildDesktopExperience = () => [
     ['Blog grid',           '3 columns. The third column allows an editorial spread feel.'],
     ['Gallery',             '3 columns at 1024px, 3 columns at 1280px, 4 columns at 1440px. Photography deserves space.'],
     ['Quote wizard',        '2-column layout: form (60%) + order summary sidebar (40%). The sidebar is sticky.'],
-    ['AI Designer',         '2-column: controls panel (40%) + preview panel (60%). At 1440px+: controls expand to 45% for better usability.'],
+    ['AI Design Studio',         '2-column: controls panel (40%) + preview panel (60%). At 1440px+: controls expand to 45% for better usability.'],
   ]),
   spacer(),
 
@@ -489,7 +489,7 @@ const buildPremiumDetails = () => [
   numbered('All testimonials include the customer\'s full name and company. Anonymous reviews or first-name-only reviews ("— Sarah T.") are less credible. Real names with real companies are the highest-trust format.'),
   numbered('The quote form never asks for credit card information. This is a lead-generation site — the absence of payment fields reduces friction and increases trust.'),
   numbered('The privacy policy link is in the footer AND in the quote form contact step. The form placement is especially important: users actively think about data privacy when entering personal information.'),
-  numbered('The last item in a FAQ accordion is always "How do I get started?" with the answer "Request a free quote →" — a link to the quote form. Every FAQ section is a conversion opportunity.'),
+  numbered('The last item in a FAQ accordion is always "How do I get started?" with the answer "Get a Quote →" — a link to the quote form. Every FAQ section is a conversion opportunity.'),
   pageBreak(),
 ];
 
@@ -762,7 +762,7 @@ const buildAssetChecklist = () => [
     [
       ['Quote submission success', 'Animated checkmark in a circle — draws then pulses green', 'Quote form submission', 'P0 (Phase 2)'],
       ['Upload complete', 'Small checkmark for individual file upload completion', 'File upload success', 'P1 (Phase 2)'],
-      ['AI generating', 'Abstract thread-weaving animation for AI loading state', 'AI Designer generating', 'P1 (Phase 2)'],
+      ['AI generating', 'Abstract thread-weaving animation for AI loading state', 'AI Design Studio generating', 'P1 (Phase 2)'],
       ['Loading indicator', 'Branded spinner (Tam "T" monogram rotating)', 'Long page loads', 'P2'],
     ]
   ),
