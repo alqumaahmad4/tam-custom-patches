@@ -36,7 +36,7 @@ export function PatchCardScene({ reducedMotion }: PatchCardSceneProps) {
             <motion.article
               key={card.title}
               className={cn(
-                "shadow-premium absolute top-1/2 left-1/2 w-32 rounded-lg border p-3 sm:w-36 md:w-40",
+                "shadow-premium absolute top-1/2 left-1/2 w-28 rounded-lg border p-3 sm:w-36 md:w-40",
                 "will-change-transform [backface-visibility:hidden] [transform-style:preserve-3d]",
                 toneCardClasses[card.tone],
                 !isSceneWide && index > 2 ? "hidden" : "block",

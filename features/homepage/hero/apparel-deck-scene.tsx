@@ -31,7 +31,7 @@ export function ApparelDeckScene({ reducedMotion }: ApparelDeckSceneProps) {
           <motion.article
             key={card.title}
             className={cn(
-              "absolute top-1/2 left-1/2 w-32 rounded-lg border p-3 shadow-xl md:w-36",
+              "absolute top-1/2 left-1/2 w-28 rounded-lg border p-3 shadow-xl sm:w-32 md:w-36",
               "will-change-transform [backface-visibility:hidden] [transform-style:preserve-3d]",
               toneCardClasses[card.tone],
               !isSceneWide && index > 3 ? "hidden" : "block",
@@ -69,7 +69,7 @@ export function ApparelDeckScene({ reducedMotion }: ApparelDeckSceneProps) {
           >
             <div
               className={cn(
-                "mx-auto mb-4 grid h-24 w-20 place-items-center rounded-t-lg border shadow-sm",
+                "mx-auto mb-3 grid h-20 w-16 place-items-center rounded-t-lg border shadow-sm sm:mb-4 sm:h-24 sm:w-20",
                 toneAccentClasses[card.tone],
               )}
             >

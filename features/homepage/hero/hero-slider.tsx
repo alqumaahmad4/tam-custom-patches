@@ -100,7 +100,7 @@ export function HeroSlider() {
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={activeSlide.id}
-          className="relative"
+          className="relative min-h-svh"
           initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={prefersReducedMotion ? undefined : { opacity: 0 }}
@@ -115,7 +115,7 @@ export function HeroSlider() {
           dragElastic={0.08}
           onDragEnd={handleDragEnd}
         >
-          <div className="mx-auto grid min-h-[calc(100svh-4rem)] max-w-[var(--container-xl)] grid-rows-[auto_auto] items-center gap-8 px-4 pt-8 pb-24 sm:px-6 md:min-h-[calc(100svh-5rem)] md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:grid-rows-1 md:gap-8 md:py-16 lg:min-h-[calc(100svh-6rem)] lg:gap-12 lg:px-10">
+          <div className="mx-auto grid min-h-svh max-w-[var(--container-xl)] grid-rows-[auto_minmax(12rem,1fr)] items-center gap-4 px-4 pt-[calc(var(--space-20)+env(safe-area-inset-top))] pb-24 sm:px-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:grid-rows-1 md:gap-8 md:py-20 lg:gap-12 lg:px-10">
             <HeroContent
               slide={activeSlide}
               isDark={isDark}
@@ -123,7 +123,7 @@ export function HeroSlider() {
               descriptionId={descriptionId}
               onInteract={pauseForInteraction}
             />
-            <div className="relative min-h-72 md:min-h-[30rem]">
+            <div className="relative min-h-48 sm:min-h-64 md:min-h-[30rem]">
               <HeroScene scene={activeSlide.scene} reducedMotion={prefersReducedMotion} />
             </div>
           </div>

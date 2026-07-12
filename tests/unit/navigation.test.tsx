@@ -29,6 +29,10 @@ describe("navigation system", () => {
   it("opens and closes the desktop mega menu", () => {
     render(<SiteHeader />);
 
+    expect(screen.getByRole("navigation", { name: "Main navigation" }).parentElement).toHaveClass(
+      "xl:flex",
+    );
+
     fireEvent.click(screen.getByRole("button", { name: "Custom Patches" }));
 
     const submenu = screen.getByRole("region", { name: "Custom Patches submenu" });
@@ -74,6 +78,29 @@ describe("navigation system", () => {
     await waitFor(() => {
       expect(trigger).toHaveFocus();
     });
+  });
+
+  it("uses tablet navigation before the full desktop mega menu breakpoint", () => {
+    render(<SiteHeader />);
+
+    expect(screen.getByRole("navigation", { name: "Tablet navigation" })).toHaveClass(
+      "md:flex",
+      "xl:hidden",
+    );
+    expect(screen.getByRole("button", { name: "Open search" })).toHaveClass("hidden", "md:grid");
+  });
+
+  it("opens search from the mobile drawer quick action", async () => {
+    render(<SiteHeader />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
+    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Search" }));
+
+    expect(
+      await screen.findByRole("searchbox", {
+        name: "Search products, categories, industries, and blog",
+      }),
+    ).toBeInTheDocument();
   });
 
   it("renders mobile accordion links", () => {

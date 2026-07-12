@@ -154,8 +154,8 @@ export function OrderSummary({
 
   if (variant === "mobile") {
     return (
-      <details className="border-border bg-card sticky top-16 z-[var(--z-raised)] mb-6 rounded-lg border shadow-sm lg:hidden">
-        <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-4">
+      <details className="border-border bg-card rounded-lg border shadow-sm lg:hidden">
+        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 px-4">
           <span>
             <span className="block text-sm font-semibold">
               Step {(currentStepIndex ?? 0) + 1} of 6{product ? ` - ${product.label}` : ""}
@@ -166,7 +166,7 @@ export function OrderSummary({
           </span>
           <ChevronDown aria-hidden="true" className="size-5" />
         </summary>
-        <div className="border-border border-t p-4">
+        <div className="border-border max-h-[min(60svh,28rem)] overflow-y-auto border-t p-4">
           <QuoteSummaryDetails values={values} pricing={pricing} />
         </div>
       </details>

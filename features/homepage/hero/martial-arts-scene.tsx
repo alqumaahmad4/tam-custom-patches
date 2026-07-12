@@ -21,7 +21,7 @@ export function MartialArtsScene({ reducedMotion }: MartialArtsSceneProps) {
     >
       <div className="bg-foreground/25 absolute inset-x-10 bottom-7 h-12 rounded-full blur-[var(--blur-glass)]" />
       <motion.div
-        className="border-gold/35 bg-surface text-foreground shadow-premium absolute top-1/2 left-1/2 w-56 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-lg border p-5 md:w-64"
+        className="border-gold/35 bg-surface text-foreground shadow-premium absolute top-1/2 left-1/2 w-48 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-lg border p-4 md:w-64 md:p-5"
         initial={reducedMotion ? false : { opacity: 0, y: 28, scale: 0.92 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={
@@ -41,17 +41,17 @@ export function MartialArtsScene({ reducedMotion }: MartialArtsSceneProps) {
           />
         ) : null}
         <div className="relative">
-          <div className="border-border bg-section-bg mx-auto h-36 w-32 rounded-t-lg border p-4 md:h-40 md:w-36">
-            <div className="border-border bg-surface mx-auto mb-5 h-10 w-10 rounded-full border" />
+          <div className="border-border bg-section-bg mx-auto h-28 w-24 rounded-t-lg border p-3 md:h-40 md:w-36 md:p-4">
+            <div className="border-border bg-surface mx-auto mb-4 h-8 w-8 rounded-full border md:mb-5 md:h-10 md:w-10" />
             <div className="grid grid-cols-2 gap-3">
-              <span className="border-border bg-surface h-20 rounded-sm border" />
-              <span className="border-border bg-surface h-20 rounded-sm border" />
+              <span className="border-border bg-surface h-14 rounded-sm border md:h-20" />
+              <span className="border-border bg-surface h-14 rounded-sm border md:h-20" />
             </div>
           </div>
-          <div className="bg-gold mx-auto -mt-2 h-4 w-40 rounded-full shadow-md md:w-44" />
-          <div className="mx-auto mt-2 grid w-36 grid-cols-2 gap-4 md:w-40">
-            <span className="border-border bg-section-bg h-20 rounded-b-lg border" />
-            <span className="border-border bg-section-bg h-20 rounded-b-lg border" />
+          <div className="bg-gold mx-auto -mt-2 h-3 w-32 rounded-full shadow-md md:h-4 md:w-44" />
+          <div className="mx-auto mt-2 grid w-28 grid-cols-2 gap-3 md:w-40 md:gap-4">
+            <span className="border-border bg-section-bg h-14 rounded-b-lg border md:h-20" />
+            <span className="border-border bg-section-bg h-14 rounded-b-lg border md:h-20" />
           </div>
           <div className="bg-gold mt-5 h-1 rounded-full" />
         </div>
@@ -63,7 +63,7 @@ export function MartialArtsScene({ reducedMotion }: MartialArtsSceneProps) {
           <motion.article
             key={detail.title}
             className={cn(
-              "absolute top-1/2 left-1/2 w-36 rounded-lg border p-3 shadow-xl md:w-40",
+              "absolute top-1/2 left-1/2 w-32 rounded-lg border p-3 shadow-xl md:w-40",
               toneCardClasses[detail.tone],
             )}
             initial={

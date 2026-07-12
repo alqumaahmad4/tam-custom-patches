@@ -24,7 +24,7 @@ export function HeroContent({
     <div className="relative z-[var(--z-raised)] max-w-2xl">
       <p
         className={cn(
-          "mb-4 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase",
+          "mb-3 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase md:mb-4",
           isDark ? "text-surface/80" : "text-primary",
         )}
       >
@@ -46,13 +46,13 @@ export function HeroContent({
       <p
         id={descriptionId}
         className={cn(
-          "mt-6 max-w-[var(--text-max-measure,70ch)] text-base leading-7 md:text-lg md:leading-8",
+          "mt-4 max-w-[var(--text-max-measure,70ch)] text-base leading-7 md:mt-6 md:text-lg md:leading-8",
           isDark ? "text-surface/80" : "text-muted-foreground",
         )}
       >
         {slide.description}
       </p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-8">
         <Button asChild size="lg" className="min-h-[52px] px-6 text-base">
           <Link href={slide.primaryCta.href} onClick={onInteract}>
             {slide.primaryCta.label}
@@ -75,7 +75,10 @@ export function HeroContent({
           </Link>
         </Button>
       </div>
-      <ul className="mt-8 grid gap-3 sm:grid-cols-3" aria-label={`${slide.title} trust points`}>
+      <ul
+        className="mt-5 grid gap-3 sm:grid-cols-3 md:mt-8"
+        aria-label={`${slide.title} trust points`}
+      >
         {slide.trustItems.map((item) => (
           <li
             key={item}

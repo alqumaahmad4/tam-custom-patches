@@ -1,35 +1,35 @@
+"use client";
+
 import type { ReactNode } from "react";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 type OptionCardProps = {
+  value: string;
   title: string;
   description?: string;
   selected: boolean;
-  onSelect: () => void;
   children?: ReactNode;
   className?: string;
 };
 
 export function OptionCard({
+  value,
   title,
   description,
   selected,
-  onSelect,
   children,
   className,
 }: OptionCardProps) {
   return (
-    <button
-      type="button"
-      aria-pressed={selected}
+    <RadioGroupPrimitive.Item
+      value={value}
       className={cn(
-        "border-border bg-card hover:border-primary/50 flex min-h-32 w-full flex-col rounded-lg border p-4 text-left transition-[border-color,box-shadow,transform] duration-200 hover:shadow-md focus-visible:outline-none",
-        selected ? "border-primary bg-tag-bg shadow-md" : null,
+        "border-border bg-card hover:border-primary/50 data-[state=checked]:border-primary data-[state=checked]:bg-tag-bg flex min-h-32 w-full flex-col rounded-lg border p-4 text-left transition-[border-color,box-shadow,transform] duration-200 hover:shadow-md focus-visible:outline-none data-[state=checked]:shadow-md",
         className,
       )}
-      onClick={onSelect}
     >
       <span className="flex items-start justify-between gap-3">
         <span>
@@ -46,10 +46,12 @@ export function OptionCard({
             selected ? "bg-primary text-primary-foreground border-primary" : "bg-surface",
           )}
         >
-          {selected ? <Check aria-hidden="true" className="size-3.5" /> : null}
+          <RadioGroupPrimitive.Indicator asChild>
+            <Check aria-hidden="true" className="size-3.5" />
+          </RadioGroupPrimitive.Indicator>
         </span>
       </span>
       {children ? <span className="mt-4 block">{children}</span> : null}
-    </button>
+    </RadioGroupPrimitive.Item>
   );
 }

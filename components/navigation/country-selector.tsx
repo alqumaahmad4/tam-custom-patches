@@ -53,7 +53,7 @@ export function CountrySelector({ isSolid }: CountrySelectorProps) {
   }
 
   return (
-    <div ref={rootRef} className="relative hidden lg:block">
+    <div ref={rootRef} className="relative hidden xl:block">
       <button
         ref={triggerRef}
         type="button"

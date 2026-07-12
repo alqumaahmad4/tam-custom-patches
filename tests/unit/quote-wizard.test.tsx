@@ -1,7 +1,8 @@
 import type { ForwardRefExoticComponent, HTMLAttributes, ReactNode, RefAttributes } from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { QuoteWizardPage } from "@/features/quote-wizard";
 import { QuoteWizard } from "@/features/quote-wizard/components/quote-wizard";
 import { useQuoteWizardStore } from "@/features/quote-wizard/store";
 import { defaultQuoteWizardValues } from "@/features/quote-wizard/validation";
@@ -77,19 +78,19 @@ function continueWizard() {
 }
 
 function chooseProduct(name = "Embroidered Patches") {
-  fireEvent.click(screen.getByRole("button", { name: new RegExp(name, "i") }));
+  fireEvent.click(screen.getByRole("radio", { name: new RegExp(name, "i") }));
 }
 
 async function completeFirstThreeSteps() {
   chooseProduct();
   continueWizard();
-  await screen.findByRole("heading", { level: 1, name: "Choose quantity" });
-  fireEvent.click(screen.getByRole("button", { name: "100" }));
+  await screen.findByRole("heading", { level: 2, name: "Choose quantity" });
+  fireEvent.click(screen.getByRole("radio", { name: "100" }));
   continueWizard();
-  await screen.findByRole("heading", { level: 1, name: "Choose size" });
-  fireEvent.click(screen.getByRole("button", { name: '3"' }));
+  await screen.findByRole("heading", { level: 2, name: "Choose size" });
+  fireEvent.click(screen.getByRole("radio", { name: '3"' }));
   continueWizard();
-  await screen.findByRole("heading", { level: 1, name: "Artwork upload" });
+  await screen.findByRole("heading", { level: 2, name: "Artwork upload" });
 }
 
 describe("quote wizard", () => {
@@ -106,9 +107,22 @@ describe("quote wizard", () => {
 
     continueWizard();
 
-    expect(await screen.findByRole("alert")).toHaveTextContent("Choose a product category.");
+    expect(await screen.findByText("Review this step")).toBeInTheDocument();
+    expect(screen.getAllByRole("alert")[0]).toHaveTextContent("Choose a product category.");
     expect(
-      screen.getByRole("heading", { level: 1, name: "Choose product category" }),
+      screen.getByRole("heading", { level: 2, name: "Choose product category" }),
+    ).toBeInTheDocument();
+  });
+
+  it("keeps the quote page title as the only h1 and renders the wizard step as h2", () => {
+    render(<QuoteWizardPage />);
+
+    expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Build your custom quote" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Choose product category" }),
     ).toBeInTheDocument();
   });
 
@@ -119,11 +133,11 @@ describe("quote wizard", () => {
     continueWizard();
 
     expect(
-      await screen.findByRole("heading", { level: 1, name: "Choose quantity" }),
+      await screen.findByRole("heading", { level: 2, name: "Choose quantity" }),
     ).toBeInTheDocument();
     expect(screen.getAllByText("PVC Patches").length).toBeGreaterThan(1);
 
-    fireEvent.click(screen.getByRole("button", { name: "250" }));
+    fireEvent.click(screen.getByRole("radio", { name: "250" }));
 
     expect(screen.getAllByText("250 units").length).toBeGreaterThan(0);
   });
@@ -135,11 +149,11 @@ describe("quote wizard", () => {
     continueWizard();
 
     expect(
-      await screen.findByRole("heading", { level: 1, name: "Choose quantity" }),
+      await screen.findByRole("heading", { level: 2, name: "Choose quantity" }),
     ).toBeInTheDocument();
     expect(screen.getAllByText("Select product and quantity").length).toBeGreaterThan(0);
 
-    fireEvent.click(screen.getByRole("button", { name: "100" }));
+    fireEvent.click(screen.getByRole("radio", { name: "100" }));
 
     expect(screen.getAllByText(/\$[0-9]/).length).toBeGreaterThan(0);
   });
@@ -172,14 +186,14 @@ describe("quote wizard", () => {
     continueWizard();
 
     expect(
-      await screen.findByRole("heading", { level: 1, name: "Customization" }),
+      await screen.findByRole("heading", { level: 2, name: "Customization" }),
     ).toBeInTheDocument();
   });
 
-  it("renders keyboard-focusable controls and the mobile summary disclosure", () => {
+  it("renders keyboard-focusable radio cards and the mobile summary disclosure", () => {
     render(<QuoteWizard />);
 
-    const productButton = screen.getByRole("button", { name: /Chenille Patches/i });
+    const productButton = screen.getByRole("radio", { name: /Chenille Patches/i });
 
     productButton.focus();
 
@@ -189,5 +203,43 @@ describe("quote wizard", () => {
       .find((element) => element.closest("summary"));
 
     expect(mobileSummaryText?.closest("details")).toBeInTheDocument();
+  });
+
+  it("uses checked radio state for card selections and supports keyboard movement", () => {
+    render(<QuoteWizard />);
+
+    const embroidered = screen.getByRole("radio", { name: /Embroidered Patches/i });
+    const pvc = screen.getByRole("radio", { name: /PVC Patches/i });
+
+    expect(embroidered).toHaveAttribute("aria-checked", "false");
+
+    fireEvent.click(embroidered);
+
+    expect(embroidered).toHaveAttribute("aria-checked", "true");
+
+    embroidered.focus();
+    fireEvent.keyDown(embroidered, { key: "ArrowDown" });
+
+    expect(pvc).toHaveFocus();
+  });
+
+  it("shows a visible validation summary, moves focus, and keeps the mobile action group reachable", async () => {
+    HTMLElement.prototype.scrollIntoView = vi.fn();
+
+    render(<QuoteWizard />);
+
+    expect(
+      screen.getByRole("group", { name: "Quote actions and mobile summary" }),
+    ).toBeInTheDocument();
+
+    continueWizard();
+
+    const summary = (await screen.findByText("Review this step")).closest('[role="alert"]');
+
+    expect(summary).toHaveTextContent("Choose a product category.");
+    await waitFor(() => {
+      expect(summary).toHaveFocus();
+    });
+    expect(HTMLElement.prototype.scrollIntoView).toHaveBeenCalled();
   });
 });

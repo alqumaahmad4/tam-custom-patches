@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { MainContent } from "@/components/layout/main-content";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
@@ -93,9 +94,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <body>
         <SkipLink />
         <SiteHeader />
-        <main id="main-content" tabIndex={-1} className="min-h-svh pt-16 outline-none lg:pt-20">
-          {children}
-        </main>
+        <MainContent>{children}</MainContent>
         <SiteFooter />
       </body>
     </html>

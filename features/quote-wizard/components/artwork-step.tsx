@@ -45,6 +45,10 @@ export function ArtworkStep() {
   } = useFormContext<QuoteWizardValues>();
   const files = watch("artworkFiles");
   const artworkStatus = watch("artworkStatus");
+  const artworkError = errors.artworkFiles ?? errors.artworkStatus;
+  const artworkErrorId = artworkError
+    ? `quote-error-${errors.artworkFiles ? "artworkFiles" : "artworkStatus"}`
+    : undefined;
 
   function setFiles(fileList: FileList | File[]) {
     const nextFiles = Array.from(fileList);
@@ -76,13 +80,15 @@ export function ArtworkStep() {
 
   return (
     <div>
-      {(errors.artworkStatus || errors.artworkFiles) && (
-        <p role="alert" className="text-destructive mb-4 text-sm font-medium">
-          {errors.artworkFiles?.message ?? errors.artworkStatus?.message}
+      {artworkError ? (
+        <p id={artworkErrorId} role="alert" className="text-destructive mb-4 text-sm font-medium">
+          {artworkError.message}
         </p>
-      )}
+      ) : null}
 
       <div
+        data-quote-field={errors.artworkFiles ? "artworkFiles" : "artworkStatus"}
+        aria-describedby={artworkErrorId}
         className={cn(
           "border-border bg-card flex min-h-64 flex-col items-center justify-center rounded-lg border border-dashed p-6 text-center transition-colors duration-200",
           artworkStatus === "uploaded" ? "border-primary bg-tag-bg" : null,

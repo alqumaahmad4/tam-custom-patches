@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, Globe2, Menu, Repeat2, Sparkles } from "lucide-react";
+import { Check, Globe2, Menu, Repeat2, Search, Sparkles } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { Button } from "@/components/ui/button";
@@ -29,11 +29,12 @@ import { cn } from "@/lib/utils";
 type MobileNavProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onSearch: () => void;
 };
 
 const quoteDescriptionId = "mobile-quote-description";
 
-export function MobileNav({ open, onOpenChange }: MobileNavProps) {
+export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
   const [countryCode, setCountryCode] = useState<(typeof countryOptions)[number]["code"]>("US");
 
   function selectCountry(code: typeof countryCode) {
@@ -118,6 +119,19 @@ export function MobileNav({ open, onOpenChange }: MobileNavProps) {
               Quick actions
             </p>
             <ul className="mt-2 space-y-1">
+              <li>
+                <button
+                  type="button"
+                  className="hover:bg-secondary focus-visible:ring-ring flex min-h-[52px] w-full items-center rounded-lg px-3 text-left text-base font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  onClick={() => {
+                    onOpenChange(false);
+                    window.setTimeout(onSearch, 0);
+                  }}
+                >
+                  <Search aria-hidden="true" className="text-primary mr-3 size-4" />
+                  Search
+                </button>
+              </li>
               <li>
                 <SheetClose asChild>
                   <Link

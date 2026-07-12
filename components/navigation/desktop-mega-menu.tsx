@@ -121,7 +121,7 @@ export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
   return (
     <div
       ref={rootRef}
-      className="hidden flex-1 justify-center lg:flex"
+      className="hidden flex-1 justify-center xl:flex"
       onPointerEnter={() => clearTimer(closeTimerRef)}
       onPointerLeave={scheduleClose}
       onBlur={(event) => {
@@ -131,7 +131,7 @@ export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
       }}
     >
       <nav aria-label="Main navigation">
-        <ul className="flex items-center gap-6 xl:gap-8">
+        <ul className="flex items-center gap-5 2xl:gap-8">
           {navigationGroups.map((group, index) => {
             const isOpen = openGroupId === group.id;
             const isActive = getIsActive(pathname, group.href);
@@ -198,11 +198,11 @@ export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
           onPointerEnter={() => clearTimer(closeTimerRef)}
           onPointerLeave={scheduleClose}
         >
-          <div className="mx-auto grid max-h-[480px] max-w-[var(--container-xl)] grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)_minmax(0,0.9fr)_220px] gap-8 overflow-y-auto px-10 py-8">
+          <div className="mx-auto grid max-h-[calc(100svh-5rem)] max-w-[var(--container-xl)] grid-cols-[minmax(0,1.1fr)_minmax(0,0.85fr)_minmax(0,0.85fr)_minmax(180px,0.65fr)] gap-5 overflow-y-auto px-8 py-6 2xl:gap-8 2xl:px-10 2xl:py-8">
             <MegaMenuColumn title={openGroup.label} links={openGroup.productLinks} />
             <MegaMenuColumn title="By Industry" links={openGroup.industryLinks} compact />
             <MegaMenuColumn title="Tools & Resources" links={openGroup.resourceLinks} compact />
-            <aside className="bg-section-bg rounded-lg border p-5">
+            <aside className="bg-section-bg rounded-lg border p-4 2xl:p-5">
               <p className="text-primary mb-3 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase">
                 Featured
               </p>
@@ -212,18 +212,20 @@ export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
                   className="group block rounded-md focus-visible:outline-none"
                   onClick={() => closeMenu(false)}
                 >
-                  <span className="bg-primary/10 text-primary mb-4 grid size-12 place-items-center rounded-lg">
+                  <span className="bg-primary/10 text-primary mb-4 grid size-10 place-items-center rounded-lg 2xl:size-12">
                     {openGroup.featured.icon ? (
                       <openGroup.featured.icon aria-hidden={true} className="size-5" />
                     ) : (
                       <ArrowRight aria-hidden={true} className="size-5" />
                     )}
                   </span>
-                  <span className="block text-base font-semibold">{openGroup.featured.label}</span>
+                  <span className="block text-sm font-semibold 2xl:text-base">
+                    {openGroup.featured.label}
+                  </span>
                   <span className="text-muted-foreground mt-2 block text-sm leading-6">
                     {openGroup.featured.description ?? openGroup.description}
                   </span>
-                  <span className="text-primary mt-4 inline-flex items-center gap-2 text-sm font-semibold">
+                  <span className="text-primary mt-3 inline-flex items-center gap-2 text-sm font-semibold 2xl:mt-4">
                     Explore
                     <ArrowRight
                       aria-hidden="true"
@@ -251,18 +253,18 @@ function MegaMenuColumn({
 }) {
   return (
     <div>
-      <h2 className="text-muted-foreground mb-4 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase">
+      <h2 className="text-muted-foreground mb-3 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase 2xl:mb-4">
         {title}
       </h2>
-      <ul className={compact ? "space-y-2" : "space-y-3"}>
+      <ul className={compact ? "space-y-1" : "space-y-2"}>
         {links.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className="group hover:bg-secondary flex min-h-11 items-start gap-3 rounded-lg p-2 transition-colors duration-150 focus-visible:outline-none"
+              className="group hover:bg-secondary flex min-h-10 items-start gap-3 rounded-lg p-2 transition-colors duration-150 focus-visible:outline-none"
             >
               {link.icon ? (
-                <span className="bg-tag-bg text-primary mt-0.5 grid size-9 shrink-0 place-items-center rounded-md">
+                <span className="bg-tag-bg text-primary mt-0.5 grid size-8 shrink-0 place-items-center rounded-md 2xl:size-9">
                   <link.icon aria-hidden={true} className="size-4" />
                 </span>
               ) : null}

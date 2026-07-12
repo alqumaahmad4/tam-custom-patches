@@ -9,9 +9,11 @@ import {
   threadColorOptions,
 } from "@/features/quote-wizard/data";
 import { OptionCard } from "@/features/quote-wizard/components/option-card";
+import { handleRadioGroupArrowNavigation } from "@/features/quote-wizard/components/radio-keyboard-navigation";
 import type { QuoteOption } from "@/features/quote-wizard/types";
 import type { QuoteWizardValues } from "@/features/quote-wizard/validation";
 import { Label } from "@/components/ui/label";
+import { RadioGroup } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
@@ -31,38 +33,48 @@ function OptionGroup({ title, fieldName, options, compact = false }: OptionGroup
   } = useFormContext<QuoteWizardValues>();
   const selectedValue = watch(fieldName);
   const error = errors[fieldName];
+  const legendId = `quote-${fieldName}-legend`;
+  const errorId = `quote-error-${fieldName}`;
 
   return (
     <fieldset>
-      <legend className="text-base font-semibold">{title}</legend>
+      <legend id={legendId} className="text-base font-semibold">
+        {title}
+      </legend>
       {error ? (
-        <p role="alert" className="text-destructive mt-2 text-sm font-medium">
+        <p id={errorId} role="alert" className="text-destructive mt-2 text-sm font-medium">
           {error.message}
         </p>
       ) : null}
-      <div
+      <RadioGroup
+        value={selectedValue}
+        aria-labelledby={legendId}
+        aria-describedby={error ? errorId : undefined}
+        data-quote-field={fieldName}
         className={cn(
           "mt-3 grid gap-3",
           compact ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2",
         )}
+        onKeyDownCapture={handleRadioGroupArrowNavigation}
+        onValueChange={(value) => {
+          setValue(fieldName, value, {
+            shouldDirty: true,
+            shouldValidate: true,
+          });
+          clearErrors(fieldName);
+        }}
       >
         {options.map((option) => (
           <OptionCard
             key={option.value}
+            value={option.value}
             title={option.label}
             description={option.description}
             selected={selectedValue === option.value}
             className={compact ? "min-h-20" : undefined}
-            onSelect={() => {
-              setValue(fieldName, option.value, {
-                shouldDirty: true,
-                shouldValidate: true,
-              });
-              clearErrors(fieldName);
-            }}
           />
         ))}
-      </div>
+      </RadioGroup>
     </fieldset>
   );
 }
@@ -88,12 +100,18 @@ export function CustomizationStep() {
         <Label htmlFor="quote-notes">Notes</Label>
         <Textarea
           id="quote-notes"
+          data-quote-field="notes"
+          aria-describedby={errors.notes ? "quote-error-notes" : undefined}
           className="mt-2 min-h-32"
           placeholder="Share placement details, deadlines, color notes, or anything the artwork team should know."
           {...register("notes")}
         />
         {errors.notes ? (
-          <p role="alert" className="text-destructive mt-2 text-sm font-medium">
+          <p
+            id="quote-error-notes"
+            role="alert"
+            className="text-destructive mt-2 text-sm font-medium"
+          >
             {errors.notes.message}
           </p>
         ) : null}

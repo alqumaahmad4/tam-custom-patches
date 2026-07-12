@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search } from "lucide-react";
+import { ArrowLeft, Search, ShieldCheck } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -17,6 +17,8 @@ import { cn } from "@/lib/utils";
 
 const quoteDescriptionId = "header-quote-description";
 
+type HeaderVariant = "marketing" | "quote";
+
 function getIsActive(pathname: string, href: string) {
   return href === "/" ? pathname === href : pathname.startsWith(href);
 }
@@ -27,7 +29,9 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const isHome = pathname === routes.home;
-  const isSolid = !isHome || isScrolled || mobileOpen || searchOpen;
+  const isQuoteRoute = pathname.startsWith(routes.quote);
+  const variant: HeaderVariant = isQuoteRoute ? "quote" : "marketing";
+  const isSolid = !isHome || isScrolled || mobileOpen || searchOpen || variant === "quote";
 
   useEffect(() => {
     const updateScrolled = () => setIsScrolled(window.scrollY > 80);
@@ -38,9 +42,38 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", updateScrolled);
   }, []);
 
+  if (variant === "quote") {
+    return (
+      <header
+        role="banner"
+        data-variant="quote"
+        data-scrolled="true"
+        className="border-border bg-background/95 fixed inset-x-0 top-0 z-[var(--z-sticky)] border-b shadow-sm backdrop-blur-[var(--blur-backdrop)]"
+      >
+        <div className="mx-auto flex h-16 max-w-[var(--container-xl)] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
+          <BrandLogo priority imageClassName="h-7 max-w-[180px] sm:h-8 sm:max-w-[220px]" />
+          <div className="flex items-center gap-3">
+            <span className="text-muted-foreground hidden items-center gap-2 text-sm font-medium sm:inline-flex">
+              <ShieldCheck aria-hidden="true" className="text-primary size-4" />
+              Secure quote
+            </span>
+            <Button asChild variant="outline" className="h-11 rounded-full px-4">
+              <Link href={routes.home}>
+                <ArrowLeft aria-hidden="true" className="size-4" />
+                <span className="hidden sm:inline">Back to site</span>
+                <span className="sm:hidden">Exit</span>
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header
       role="banner"
+      data-variant="marketing"
       data-scrolled={isSolid ? "true" : "false"}
       className={cn(
         "fixed inset-x-0 top-0 z-[var(--z-sticky)] transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ease-out",
@@ -59,7 +92,7 @@ export function SiteHeader() {
 
         <nav
           aria-label="Tablet navigation"
-          className="hidden flex-1 justify-center gap-5 md:flex lg:hidden"
+          className="hidden flex-1 justify-center gap-5 md:flex xl:hidden"
         >
           {tabletNavigation.map((item) => {
             const isActive = getIsActive(pathname, item.href);
@@ -86,7 +119,7 @@ export function SiteHeader() {
             type="button"
             aria-label="Open search"
             className={cn(
-              "grid size-10 place-items-center rounded-full transition-colors duration-150 focus-visible:outline-none",
+              "hidden size-10 place-items-center rounded-full transition-colors duration-150 focus-visible:outline-none md:grid",
               isSolid
                 ? "text-foreground/80 hover:bg-secondary hover:text-primary"
                 : "text-surface/90 hover:bg-surface/10 hover:text-surface",
@@ -99,7 +132,7 @@ export function SiteHeader() {
             asChild
             variant="ghost"
             className={cn(
-              "hidden h-10 rounded-full px-4 lg:inline-flex",
+              "hidden h-10 rounded-full px-4 xl:inline-flex",
               isSolid
                 ? "text-foreground hover:text-primary"
                 : "text-surface hover:bg-surface/10 hover:text-surface",
@@ -116,7 +149,11 @@ export function SiteHeader() {
               <span className="hidden sm:inline">Get Free Quote</span>
             </Link>
           </Button>
-          <MobileNav open={mobileOpen} onOpenChange={setMobileOpen} />
+          <MobileNav
+            open={mobileOpen}
+            onOpenChange={setMobileOpen}
+            onSearch={() => setSearchOpen(true)}
+          />
         </div>
       </div>
       <SearchOverlay open={searchOpen} onOpenChange={setSearchOpen} />
