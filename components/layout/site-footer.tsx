@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { FooterWordmark } from "@/components/layout/brand-logo";
-import { footerNavigation } from "@/lib/navigation";
+import { footerNavigation, legalNavigationLinks } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -46,7 +46,7 @@ export function SiteFooter() {
           </p>
           <nav aria-label="Legal links">
             <ul className="flex flex-wrap gap-x-4 gap-y-2">
-              {footerNavigation[3].links.map((link) => (
+              {legalNavigationLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

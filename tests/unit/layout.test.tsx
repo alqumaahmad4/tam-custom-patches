@@ -32,12 +32,11 @@ describe("global layout foundation", () => {
 
   it("keeps the documented primary navigation labels", () => {
     expect(navigationGroups.map((item) => item.label)).toEqual([
-      "Custom Patches",
-      "Custom Apparel",
-      "Martial Arts Uniforms & Gear",
-      "Accessories",
+      "Products",
       "Industries",
-      "Resources",
+      "Design & Pricing",
+      "Guides & Support",
+      "About",
     ]);
   });
 

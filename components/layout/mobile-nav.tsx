@@ -1,17 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Check, Globe2, Menu, Repeat2, Search, Sparkles } from "lucide-react";
+import { Menu, Search, Sparkles } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
-import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -22,9 +21,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { countryOptions, navigationGroups } from "@/lib/navigation";
+import { navigationGroups, productNavigationGroups } from "@/lib/navigation";
 import { routes } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
 
 type MobileNavProps = {
   open: boolean;
@@ -35,13 +33,6 @@ type MobileNavProps = {
 const quoteDescriptionId = "mobile-quote-description";
 
 export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
-  const [countryCode, setCountryCode] = useState<(typeof countryOptions)[number]["code"]>("US");
-
-  function selectCountry(code: typeof countryCode) {
-    setCountryCode(code);
-    document.cookie = `tam-country=${code}; path=/; max-age=31536000`;
-  }
-
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>
@@ -52,7 +43,7 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
           aria-label="Open menu"
           aria-controls="mobile-navigation"
           aria-expanded={open}
-          className="min-h-11 min-w-11 lg:hidden"
+          className="min-h-11 min-w-11 xl:hidden"
         >
           <Menu aria-hidden="true" />
         </Button>
@@ -60,7 +51,7 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
       <SheetContent
         id="mobile-navigation"
         side="right"
-        className="flex h-dvh w-full max-w-none flex-col overflow-hidden p-0 sm:max-w-[360px]"
+        className="flex h-dvh w-full max-w-none flex-col overflow-hidden p-0 sm:max-w-[400px]"
       >
         <SheetHeader className="border-border border-b px-5 pt-5 pb-4 text-left">
           <BrandLogo imageClassName="h-8" />
@@ -74,41 +65,47 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
           <Accordion type="multiple" className="space-y-1">
             {navigationGroups.map((group) => (
               <AccordionItem key={group.id} value={group.id} className="border-border">
-                <AccordionTrigger className="hover:bg-secondary min-h-[52px] rounded-lg px-3 text-base font-semibold hover:no-underline">
+                <AccordionTrigger className="hover:bg-secondary min-h-[52px] rounded-md px-3 text-base font-semibold hover:no-underline">
                   {group.label}
                 </AccordionTrigger>
                 <AccordionContent className="pb-3">
-                  <ul className="space-y-1 px-2">
-                    <li>
-                      <SheetClose asChild>
-                        <Link
-                          href={group.href}
-                          className="text-primary flex min-h-11 items-center rounded-md px-3 text-sm font-semibold focus-visible:outline-none"
-                        >
-                          {group.label} overview
-                        </Link>
-                      </SheetClose>
-                    </li>
-                    {group.productLinks.map((link) => {
-                      const Icon = link.icon;
-
-                      return (
-                        <li key={link.href}>
+                  {group.id === "products" ? (
+                    <ProductsMobileAccordion />
+                  ) : (
+                    <ul className="space-y-1 px-2">
+                      {group.href ? (
+                        <li>
                           <SheetClose asChild>
                             <Link
-                              href={link.href}
-                              className="hover:bg-secondary flex min-h-11 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
+                              href={group.href}
+                              className="text-primary flex min-h-11 items-center rounded-md px-3 text-sm font-semibold focus-visible:outline-none"
                             >
-                              {Icon ? (
-                                <Icon aria-hidden="true" className="text-primary size-4" />
-                              ) : null}
-                              {link.label}
+                              {group.label} overview
                             </Link>
                           </SheetClose>
                         </li>
-                      );
-                    })}
-                  </ul>
+                      ) : null}
+                      {group.links.map((link) => {
+                        const Icon = link.icon;
+
+                        return (
+                          <li key={`${group.id}-${link.href}-${link.label}`}>
+                            <SheetClose asChild>
+                              <Link
+                                href={link.href}
+                                className="hover:bg-secondary flex min-h-11 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
+                              >
+                                {Icon ? (
+                                  <Icon aria-hidden="true" className="text-primary size-4" />
+                                ) : null}
+                                {link.label}
+                              </Link>
+                            </SheetClose>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -116,13 +113,13 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
 
           <div className="border-border mt-5 border-t pt-5">
             <p className="text-muted-foreground px-3 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase">
-              Quick actions
+              Actions
             </p>
             <ul className="mt-2 space-y-1">
               <li>
                 <button
                   type="button"
-                  className="hover:bg-secondary focus-visible:ring-ring flex min-h-[52px] w-full items-center rounded-lg px-3 text-left text-base font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  className="hover:bg-secondary focus-visible:ring-ring flex min-h-[52px] w-full items-center rounded-md px-3 text-left text-base font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   onClick={() => {
                     onOpenChange(false);
                     window.setTimeout(onSearch, 0);
@@ -136,71 +133,80 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
                 <SheetClose asChild>
                   <Link
                     href={routes.aiDesigner}
-                    className="hover:bg-secondary focus-visible:ring-ring flex min-h-[52px] items-center rounded-lg px-3 text-base font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    aria-label="Open AI Design Studio"
+                    className="hover:bg-secondary focus-visible:ring-ring flex min-h-[52px] items-center rounded-md px-3 text-base font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   >
                     <Sparkles aria-hidden="true" className="text-primary mr-3 size-4" />
-                    AI Designer
-                  </Link>
-                </SheetClose>
-              </li>
-              <li>
-                <SheetClose asChild>
-                  <Link
-                    href={routes.reorder}
-                    className="hover:bg-secondary focus-visible:ring-ring flex min-h-[52px] items-center rounded-lg px-3 text-base font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-                  >
-                    <Repeat2 aria-hidden="true" className="text-primary mr-3 size-4" />
-                    Reorder
+                    AI Design Studio
                   </Link>
                 </SheetClose>
               </li>
             </ul>
-
-            <div className="mt-4 rounded-lg border p-3">
-              <div className="mb-2 flex min-h-11 items-center gap-3 px-1 text-sm font-semibold">
-                <Globe2 aria-hidden="true" className="text-primary size-4" />
-                Country selector
-              </div>
-              <div className="grid gap-1">
-                {countryOptions.slice(0, 5).map((country) => {
-                  const selected = country.code === countryCode;
-
-                  return (
-                    <button
-                      key={country.code}
-                      type="button"
-                      className={cn(
-                        "flex min-h-11 items-center justify-between rounded-md px-3 text-left text-sm transition-colors duration-150 focus-visible:outline-none",
-                        selected ? "bg-tag-bg text-primary" : "hover:bg-secondary",
-                      )}
-                      onClick={() => selectCountry(country.code)}
-                    >
-                      <span>{country.label}</span>
-                      {selected ? <Check aria-hidden="true" className="size-4" /> : null}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
           </div>
         </nav>
 
         <SheetFooter className="border-border gap-3 border-t px-5 pt-4 pb-[max(var(--space-5),env(safe-area-inset-bottom))] sm:flex-col sm:space-x-0">
           <p id={quoteDescriptionId} className="sr-only">
-            Get a free custom patch quote.
+            Request custom manufacturing pricing.
           </p>
           <SheetClose asChild>
             <Button
               asChild
-              className="h-12 w-full rounded-full"
+              className="h-12 w-full rounded-md"
               aria-describedby={quoteDescriptionId}
             >
-              <Link href={routes.quote}>Get Free Quote</Link>
+              <Link href={routes.quote}>Get a Quote</Link>
             </Button>
           </SheetClose>
           <p className="text-muted-foreground text-center text-xs">Worldwide shipping available</p>
         </SheetFooter>
       </SheetContent>
     </Sheet>
+  );
+}
+
+function ProductsMobileAccordion() {
+  return (
+    <div className="px-2">
+      <Accordion type="multiple" className="space-y-1">
+        {productNavigationGroups.map((productGroup) => (
+          <AccordionItem
+            key={productGroup.id}
+            value={productGroup.id}
+            className="border-border rounded-md border"
+          >
+            <AccordionTrigger className="hover:bg-secondary min-h-11 rounded-md px-3 text-left text-sm font-semibold hover:no-underline">
+              {productGroup.label}
+            </AccordionTrigger>
+            <AccordionContent className="px-2 pb-3">
+              <ul className="space-y-1">
+                {productGroup.links.map((link) => (
+                  <li key={`${productGroup.id}-${link.href}-${link.label}`}>
+                    <SheetClose asChild>
+                      <Link
+                        href={link.href}
+                        className="hover:bg-secondary flex min-h-11 items-center rounded-md px-3 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
+                      >
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  </li>
+                ))}
+                <li className="border-border mt-2 border-t pt-2">
+                  <SheetClose asChild>
+                    <Link
+                      href={productGroup.href}
+                      className="text-primary hover:bg-secondary flex min-h-11 items-center rounded-md px-3 text-sm font-semibold transition-colors duration-150 focus-visible:outline-none"
+                    >
+                      {productGroup.viewAllLabel}
+                    </Link>
+                  </SheetClose>
+                </li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
   );
 }

@@ -7,11 +7,10 @@ import { ArrowLeft, Search, ShieldCheck } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { CountrySelector } from "@/components/navigation/country-selector";
 import { DesktopMegaMenu } from "@/components/navigation/desktop-mega-menu";
 import { SearchOverlay } from "@/components/navigation/search-overlay";
 import { Button } from "@/components/ui/button";
-import { tabletNavigation } from "@/lib/navigation";
+import { navigationGroups, tabletNavigation } from "@/lib/navigation";
 import { routes } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -19,8 +18,12 @@ const quoteDescriptionId = "header-quote-description";
 
 type HeaderVariant = "marketing" | "quote";
 
-function getIsActive(pathname: string, href: string) {
-  return href === "/" ? pathname === href : pathname.startsWith(href);
+function getIsActive(pathname: string, href: string, activeHrefs: readonly string[] = []) {
+  return [href, ...activeHrefs].some((activeHref) =>
+    activeHref === "/"
+      ? pathname === activeHref
+      : pathname === activeHref || pathname.startsWith(`${activeHref}/`),
+  );
 }
 
 export function SiteHeader() {
@@ -51,7 +54,7 @@ export function SiteHeader() {
         className="border-border bg-background/95 fixed inset-x-0 top-0 z-[var(--z-sticky)] border-b shadow-sm backdrop-blur-[var(--blur-backdrop)]"
       >
         <div className="mx-auto flex h-16 max-w-[var(--container-xl)] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
-          <BrandLogo priority imageClassName="h-7 max-w-[180px] sm:h-8 sm:max-w-[220px]" />
+          <BrandLogo priority imageClassName="h-7 max-w-[150px] sm:h-8 sm:max-w-[220px]" />
           <div className="flex items-center gap-3">
             <span className="text-muted-foreground hidden items-center gap-2 text-sm font-medium sm:inline-flex">
               <ShieldCheck aria-hidden="true" className="text-primary size-4" />
@@ -85,7 +88,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-16 max-w-[var(--container-xl)] items-center gap-4 px-4 sm:px-6 lg:h-20 lg:px-10">
         <div className="flex min-w-0 flex-1 items-center lg:flex-[0_0_240px]">
-          <BrandLogo priority imageClassName="h-7 max-w-[180px] sm:h-8 sm:max-w-[220px] lg:h-10" />
+          <BrandLogo priority imageClassName="h-7 max-w-[150px] sm:h-8 sm:max-w-[220px] lg:h-10" />
         </div>
 
         <DesktopMegaMenu pathname={pathname} isSolid={isSolid} />
@@ -95,7 +98,8 @@ export function SiteHeader() {
           className="hidden flex-1 justify-center gap-5 md:flex xl:hidden"
         >
           {tabletNavigation.map((item) => {
-            const isActive = getIsActive(pathname, item.href);
+            const matchingGroup = navigationGroups.find((group) => group.label === item.label);
+            const isActive = getIsActive(pathname, item.href, matchingGroup?.activeHrefs);
 
             return (
               <Link
@@ -114,7 +118,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2 lg:flex-[0_0_auto]">
-          <CountrySelector isSolid={isSolid} />
           <button
             type="button"
             aria-label="Open search"
@@ -130,24 +133,27 @@ export function SiteHeader() {
           </button>
           <Button
             asChild
-            variant="ghost"
+            variant="outline"
             className={cn(
-              "hidden h-10 rounded-full px-4 xl:inline-flex",
+              "hidden h-10 rounded-md px-4 xl:inline-flex",
               isSolid
-                ? "text-foreground hover:text-primary"
-                : "text-surface hover:bg-surface/10 hover:text-surface",
+                ? "bg-background/70 text-foreground hover:text-primary"
+                : "border-surface/40 text-surface hover:bg-surface/10 hover:text-surface bg-transparent",
             )}
           >
-            <Link href={routes.aiDesigner}>AI Designer</Link>
+            <Link href={routes.aiDesigner} aria-label="Open AI Design Studio">
+              AI Design Studio
+            </Link>
           </Button>
           <span id={quoteDescriptionId} className="sr-only">
-            Get a free custom patch quote.
+            Request custom manufacturing pricing.
           </span>
-          <Button asChild className="h-9 rounded-full px-4" aria-describedby={quoteDescriptionId}>
-            <Link href={routes.quote}>
-              <span className="sm:hidden">Quote</span>
-              <span className="hidden sm:inline">Get Free Quote</span>
-            </Link>
+          <Button
+            asChild
+            className="h-10 rounded-md px-3 sm:px-4"
+            aria-describedby={quoteDescriptionId}
+          >
+            <Link href={routes.quote}>Get a Quote</Link>
           </Button>
           <MobileNav
             open={mobileOpen}

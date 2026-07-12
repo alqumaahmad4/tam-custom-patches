@@ -4,7 +4,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { navigationGroups, type NavigationGroup, type NavigationLink } from "@/lib/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  navigationGroups,
+  productNavigationGroups,
+  productsMegaMenuActions,
+  type NavigationGroup,
+  type NavigationLink,
+  type ProductMegaMenuAction,
+  type ProductNavigationGroup,
+} from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 type DesktopMegaMenuProps = {
@@ -15,8 +24,12 @@ type DesktopMegaMenuProps = {
 const openDelayMs = 150;
 const closeDelayMs = 150;
 
-function getIsActive(pathname: string, href: string) {
-  return href === "/" ? pathname === href : pathname.startsWith(href);
+function isPathMatch(pathname: string, href: string) {
+  return href === "/" ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function getIsActive(pathname: string, group: NavigationGroup) {
+  return [group.href, ...(group.activeHrefs ?? [])].some((href) => isPathMatch(pathname, href));
 }
 
 export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
@@ -131,10 +144,10 @@ export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
       }}
     >
       <nav aria-label="Main navigation">
-        <ul className="flex items-center gap-5 2xl:gap-8">
+        <ul className="flex items-center gap-4 min-[1400px]:gap-6">
           {navigationGroups.map((group, index) => {
             const isOpen = openGroupId === group.id;
-            const isActive = getIsActive(pathname, group.href);
+            const isActive = getIsActive(pathname, group);
             const panelId = `mega-menu-${group.id}`;
 
             return (
@@ -149,7 +162,7 @@ export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
                   aria-expanded={isOpen}
                   aria-haspopup="true"
                   className={cn(
-                    "rounded-sm py-2 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none",
+                    "rounded-sm py-2 text-[15px] font-medium whitespace-nowrap transition-colors duration-150 focus-visible:outline-none",
                     isActive ? "font-semibold underline underline-offset-8" : null,
                     isSolid
                       ? "text-foreground/85 hover:text-primary"
@@ -198,90 +211,176 @@ export function DesktopMegaMenu({ pathname, isSolid }: DesktopMegaMenuProps) {
           onPointerEnter={() => clearTimer(closeTimerRef)}
           onPointerLeave={scheduleClose}
         >
-          <div className="mx-auto grid max-h-[calc(100svh-5rem)] max-w-[var(--container-xl)] grid-cols-[minmax(0,1.1fr)_minmax(0,0.85fr)_minmax(0,0.85fr)_minmax(180px,0.65fr)] gap-5 overflow-y-auto px-8 py-6 2xl:gap-8 2xl:px-10 2xl:py-8">
-            <MegaMenuColumn title={openGroup.label} links={openGroup.productLinks} />
-            <MegaMenuColumn title="By Industry" links={openGroup.industryLinks} compact />
-            <MegaMenuColumn title="Tools & Resources" links={openGroup.resourceLinks} compact />
-            <aside className="bg-section-bg rounded-lg border p-4 2xl:p-5">
-              <p className="text-primary mb-3 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase">
-                Featured
-              </p>
-              {openGroup.featured ? (
-                <Link
-                  href={openGroup.featured.href}
-                  className="group block rounded-md focus-visible:outline-none"
-                  onClick={() => closeMenu(false)}
-                >
-                  <span className="bg-primary/10 text-primary mb-4 grid size-10 place-items-center rounded-lg 2xl:size-12">
-                    {openGroup.featured.icon ? (
-                      <openGroup.featured.icon aria-hidden={true} className="size-5" />
-                    ) : (
-                      <ArrowRight aria-hidden={true} className="size-5" />
-                    )}
-                  </span>
-                  <span className="block text-sm font-semibold 2xl:text-base">
-                    {openGroup.featured.label}
-                  </span>
-                  <span className="text-muted-foreground mt-2 block text-sm leading-6">
-                    {openGroup.featured.description ?? openGroup.description}
-                  </span>
-                  <span className="text-primary mt-3 inline-flex items-center gap-2 text-sm font-semibold 2xl:mt-4">
-                    Explore
-                    <ArrowRight
-                      aria-hidden="true"
-                      className="size-4 transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
-                    />
-                  </span>
-                </Link>
-              ) : null}
-            </aside>
-          </div>
+          {openGroup.id === "products" ? (
+            <ProductsMegaMenu onNavigate={() => closeMenu(false)} />
+          ) : (
+            <SimpleMegaMenu group={openGroup} onNavigate={() => closeMenu(false)} />
+          )}
         </div>
       ) : null}
     </div>
   );
 }
 
-function MegaMenuColumn({
-  title,
-  links,
-  compact = false,
+function ProductsMegaMenu({ onNavigate }: { onNavigate: () => void }) {
+  return (
+    <div className="mx-auto max-h-[calc(100svh-5rem)] max-w-[var(--container-2xl)] overflow-y-auto px-8 py-6 lg:px-10">
+      <div className="grid gap-4 min-[1400px]:grid-cols-5 xl:grid-cols-4">
+        {productNavigationGroups.map((group) => (
+          <ProductGroupColumn key={group.id} group={group} onNavigate={onNavigate} />
+        ))}
+      </div>
+      <div className="border-border mt-6 flex flex-wrap items-center justify-between gap-3 border-t pt-4">
+        {productsMegaMenuActions.map((action) => (
+          <ProductMegaMenuActionLink key={action.href} action={action} onNavigate={onNavigate} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProductGroupColumn({
+  group,
+  onNavigate,
 }: {
-  title: string;
-  links: readonly NavigationLink[];
-  compact?: boolean;
+  group: ProductNavigationGroup;
+  onNavigate: () => void;
 }) {
   return (
-    <div>
-      <h2 className="text-muted-foreground mb-3 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase 2xl:mb-4">
-        {title}
+    <section aria-labelledby={`products-group-${group.id}`} className="min-w-0">
+      <h2
+        id={`products-group-${group.id}`}
+        className="text-muted-foreground mb-3 text-xs font-semibold tracking-[var(--letter-spacing-uppercase)] uppercase"
+      >
+        {group.label}
       </h2>
-      <ul className={compact ? "space-y-1" : "space-y-2"}>
-        {links.map((link) => (
-          <li key={link.href}>
+      <ul className="space-y-1">
+        {group.links.map((link) => (
+          <li key={`${group.id}-${link.href}-${link.label}`}>
             <Link
               href={link.href}
-              className="group hover:bg-secondary flex min-h-10 items-start gap-3 rounded-lg p-2 transition-colors duration-150 focus-visible:outline-none"
+              className="hover:bg-secondary hover:text-primary flex min-h-10 items-center rounded-md px-2 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
+              onClick={onNavigate}
             >
-              {link.icon ? (
-                <span className="bg-tag-bg text-primary mt-0.5 grid size-8 shrink-0 place-items-center rounded-md 2xl:size-9">
-                  <link.icon aria-hidden={true} className="size-4" />
-                </span>
-              ) : null}
-              <span>
-                <span className="group-hover:text-primary block text-sm font-semibold">
-                  {link.label}
-                </span>
-                {!compact && link.description ? (
-                  <span className="text-muted-foreground mt-1 block text-xs leading-5">
-                    {link.description}
-                  </span>
-                ) : null}
-              </span>
+              {link.label}
             </Link>
           </li>
         ))}
+        <li className="border-border mt-2 border-t pt-2">
+          <Link
+            href={group.href}
+            className="text-primary hover:bg-secondary flex min-h-10 items-center rounded-md px-2 text-sm font-semibold transition-colors duration-150 focus-visible:outline-none"
+            onClick={onNavigate}
+          >
+            {group.viewAllLabel}
+          </Link>
+        </li>
+      </ul>
+    </section>
+  );
+}
+
+function ProductMegaMenuActionLink({
+  action,
+  onNavigate,
+}: {
+  action: ProductMegaMenuAction;
+  onNavigate: () => void;
+}) {
+  if (action.variant === "primary") {
+    return (
+      <Button asChild className="h-10 rounded-md px-4">
+        <Link href={action.href} onClick={onNavigate}>
+          {action.label}
+        </Link>
+      </Button>
+    );
+  }
+
+  if (action.variant === "secondary") {
+    return (
+      <Button asChild variant="outline" className="h-10 rounded-md px-4">
+        <Link href={action.href} onClick={onNavigate}>
+          {action.label}
+        </Link>
+      </Button>
+    );
+  }
+
+  return (
+    <Link
+      href={action.href}
+      className="text-primary inline-flex min-h-10 items-center gap-2 rounded-md text-sm font-semibold transition-colors duration-150 hover:underline focus-visible:outline-none"
+      onClick={onNavigate}
+    >
+      {action.label}
+      <ArrowRight aria-hidden="true" className="size-4" />
+    </Link>
+  );
+}
+
+function SimpleMegaMenu({ group, onNavigate }: { group: NavigationGroup; onNavigate: () => void }) {
+  return (
+    <div className="mx-auto max-h-[calc(100svh-5rem)] max-w-[var(--container-lg)] overflow-y-auto px-8 py-6 lg:px-10">
+      <div className="mb-5 flex items-start justify-between gap-6">
+        <div>
+          <h2 className="text-base font-semibold">{group.label}</h2>
+          <p className="text-muted-foreground mt-1 max-w-2xl text-sm leading-6">
+            {group.description}
+          </p>
+        </div>
+        <Link
+          href={group.href}
+          className="text-primary hidden min-h-10 shrink-0 items-center gap-2 rounded-md text-sm font-semibold hover:underline focus-visible:outline-none md:inline-flex"
+          onClick={onNavigate}
+        >
+          {group.label} overview
+          <ArrowRight aria-hidden="true" className="size-4" />
+        </Link>
+      </div>
+      <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {group.links.map((link) => (
+          <SimpleMegaMenuLink
+            key={`${group.id}-${link.href}-${link.label}`}
+            link={link}
+            onNavigate={onNavigate}
+          />
+        ))}
       </ul>
     </div>
+  );
+}
+
+function SimpleMegaMenuLink({
+  link,
+  onNavigate,
+}: {
+  link: NavigationLink;
+  onNavigate: () => void;
+}) {
+  const Icon = link.icon;
+
+  return (
+    <li>
+      <Link
+        href={link.href}
+        className="hover:bg-secondary group flex min-h-14 items-start gap-3 rounded-md p-3 transition-colors duration-150 focus-visible:outline-none"
+        onClick={onNavigate}
+      >
+        {Icon ? (
+          <span className="bg-tag-bg text-primary mt-0.5 grid size-9 shrink-0 place-items-center rounded-md">
+            <Icon aria-hidden="true" className="size-4" />
+          </span>
+        ) : null}
+        <span className="min-w-0">
+          <span className="group-hover:text-primary block text-sm font-semibold">{link.label}</span>
+          {link.description ? (
+            <span className="text-muted-foreground mt-1 block text-xs leading-5">
+              {link.description}
+            </span>
+          ) : null}
+        </span>
+      </Link>
+    </li>
   );
 }
