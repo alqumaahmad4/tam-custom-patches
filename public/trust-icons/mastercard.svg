@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="104" height="32" viewBox="0 0 104 32" role="img" aria-labelledby="mastercard-title">
+  <title id="mastercard-title">Mastercard temporary placeholder</title>
+  <circle cx="43" cy="16" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+  <circle cx="61" cy="16" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+  <path d="M14 22V10l6 7 6-7v12M80 10h10M85 10v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

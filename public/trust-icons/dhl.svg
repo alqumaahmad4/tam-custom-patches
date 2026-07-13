@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="32" viewBox="0 0 88 32" role="img" aria-labelledby="dhl-title">
+  <title id="dhl-title">DHL temporary placeholder</title>
+  <path d="M10 11h16M8 16h22M10 21h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M39 22V10h8a6 6 0 010 12zM58 10v12M58 16h12M70 10v12M79 10v12h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="32" viewBox="0 0 88 32" role="img" aria-labelledby="usps-title">
+  <title id="usps-title">USPS temporary placeholder</title>
+  <path d="M10 20l24-8h44L54 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M17 23h50M18 26h36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg>

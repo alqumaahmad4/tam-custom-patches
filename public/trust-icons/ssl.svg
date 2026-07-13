@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="32" viewBox="0 0 72 32" role="img" aria-labelledby="ssl-title">
+  <title id="ssl-title">SSL secured connection</title>
+  <path d="M36 5l18 6v8c0 8-8 12-18 15-10-3-18-7-18-15v-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="31" y="15" width="10" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+  <path d="M33 15v-3a3 3 0 016 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg>

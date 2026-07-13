@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="32" viewBox="0 0 88 32" role="img" aria-labelledby="visa-title">
+  <title id="visa-title">Visa temporary placeholder</title>
+  <rect x="1" y="1" width="86" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+  <path d="M14 10l7 12 7-12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M35 10v12M44 10h10l-10 12h10M63 22l5-12 5 12M65 18h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

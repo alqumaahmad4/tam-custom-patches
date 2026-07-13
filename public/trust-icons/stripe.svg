@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="32" viewBox="0 0 88 32" role="img" aria-labelledby="stripe-title">
+  <title id="stripe-title">Stripe temporary placeholder</title>
+  <path d="M15 11h16M15 16h16M15 21h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M43 10h10M48 10v12M62 22V10h7a5 5 0 010 10h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

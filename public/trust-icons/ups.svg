@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="32" viewBox="0 0 72 32" role="img" aria-labelledby="ups-title">
+  <title id="ups-title">UPS temporary placeholder</title>
+  <path d="M36 5l17 6v9c0 7-7 11-17 14-10-3-17-7-17-14v-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M27 14v7a4 4 0 008 0v-7M40 23V14h7a4 4 0 010 8h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

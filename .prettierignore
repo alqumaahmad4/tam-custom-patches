@@ -20,3 +20,6 @@ CODEX.md
 IMPLEMENTATION_PLAN.md
 ARCHITECTURE.md
 docs/
+
+# static SVG placeholder assets
+public/trust-icons/*.svg
