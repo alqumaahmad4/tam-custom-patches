@@ -4,13 +4,24 @@ import Link from "next/link";
 import { routes, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
+export const logoIntrinsicDimensions = {
+  width: 3088,
+  height: 330,
+} as const;
+
 type BrandLogoProps = {
   className?: string;
   imageClassName?: string;
   priority?: boolean;
+  sizes?: string;
 };
 
-export function BrandLogo({ className, imageClassName, priority = false }: BrandLogoProps) {
+export function BrandLogo({
+  className,
+  imageClassName,
+  priority = false,
+  sizes = "(max-width: 639px) 300px, (max-width: 1279px) 220px, 240px",
+}: BrandLogoProps) {
   return (
     <Link
       href={routes.home}
@@ -20,10 +31,11 @@ export function BrandLogo({ className, imageClassName, priority = false }: Brand
       <Image
         src="/logos/logo.png"
         alt={siteConfig.name}
-        width={374}
-        height={40}
+        width={logoIntrinsicDimensions.width}
+        height={logoIntrinsicDimensions.height}
         priority={priority}
-        className={cn("h-8 w-auto sm:h-9 lg:h-10", imageClassName)}
+        sizes={sizes}
+        className={cn("h-8 w-auto object-contain sm:h-9 lg:h-10", imageClassName)}
       />
     </Link>
   );

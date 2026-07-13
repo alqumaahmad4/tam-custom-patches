@@ -54,7 +54,11 @@ export function SiteHeader() {
         className="border-border bg-background/95 fixed inset-x-0 top-0 z-[var(--z-sticky)] border-b shadow-sm backdrop-blur-[var(--blur-backdrop)]"
       >
         <div className="mx-auto flex h-16 max-w-[var(--container-xl)] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
-          <BrandLogo priority imageClassName="h-7 max-w-[150px] sm:h-8 sm:max-w-[220px]" />
+          <BrandLogo
+            priority
+            sizes="(max-width: 639px) 150px, 220px"
+            imageClassName="h-auto w-[150px] object-contain sm:h-auto sm:w-[220px] lg:h-auto"
+          />
           <div className="flex items-center gap-3">
             <span className="text-muted-foreground hidden items-center gap-2 text-sm font-medium sm:inline-flex">
               <ShieldCheck aria-hidden="true" className="text-primary size-4" />
@@ -88,7 +92,11 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-16 max-w-[var(--container-xl)] items-center gap-4 px-4 sm:px-6 lg:h-20 lg:px-10">
         <div className="flex min-w-0 flex-1 items-center lg:flex-[0_0_240px]">
-          <BrandLogo priority imageClassName="h-7 max-w-[150px] sm:h-8 sm:max-w-[220px] lg:h-10" />
+          <BrandLogo
+            priority
+            sizes="(max-width: 639px) 150px, 220px"
+            imageClassName="h-auto w-[150px] object-contain sm:h-auto sm:w-[220px] lg:h-auto"
+          />
         </div>
 
         <DesktopMegaMenu pathname={pathname} isSolid={isSolid} />

@@ -54,7 +54,7 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
         className="flex h-dvh w-full max-w-none flex-col overflow-hidden p-0 sm:max-w-[400px]"
       >
         <SheetHeader className="border-border border-b px-5 pt-5 pb-4 text-left">
-          <BrandLogo imageClassName="h-8" />
+          <BrandLogo sizes="300px" imageClassName="h-8 w-auto object-contain sm:h-8 lg:h-8" />
           <SheetTitle className="sr-only">Site menu</SheetTitle>
           <SheetDescription className="sr-only">
             Main navigation links for Tam Custom Patches.
