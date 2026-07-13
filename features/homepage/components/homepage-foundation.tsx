@@ -9,11 +9,13 @@ import { SimpleProcess } from "@/features/homepage/components/simple-process";
 import { TestimonialsPreview } from "@/features/homepage/components/testimonials-preview";
 import { WhyChooseUs } from "@/features/homepage/components/why-choose-us";
 import { HeroSlider } from "@/features/homepage/hero";
+import { TrustedLogoMarquee } from "@/features/homepage/trust-logos";
 
 export function HomepageFoundation() {
   return (
     <>
       <HeroSlider />
+      <TrustedLogoMarquee />
       <AnnouncementTrustBar />
       <FeaturedCategories />
       <WhyChooseUs />

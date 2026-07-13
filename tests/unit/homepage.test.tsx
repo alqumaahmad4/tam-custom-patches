@@ -12,6 +12,7 @@ import {
   trustSignals,
   whyChooseItems,
 } from "@/features/homepage/data";
+import { trustedLogoHeading, trustedLogoItems } from "@/features/homepage/trust-logos";
 
 describe("homepage foundation", () => {
   it("keeps milestone 4A content editable through data collections", () => {
@@ -22,6 +23,7 @@ describe("homepage foundation", () => {
       "Satisfaction Guaranteed",
     ]);
     expect(featuredCategories).toHaveLength(6);
+    expect(trustedLogoItems).toHaveLength(12);
     expect(whyChooseItems).toHaveLength(7);
     expect(processSteps).toHaveLength(4);
     expect(industriesServed).toHaveLength(11);
@@ -36,6 +38,7 @@ describe("homepage foundation", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: "Custom Patches Made Easy" }),
     ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: trustedLogoHeading })).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Trust signals" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "What can we make for you?" })).toBeInTheDocument();
     expect(
@@ -64,6 +67,29 @@ describe("homepage foundation", () => {
     expect(
       screen.getByRole("heading", { name: "Ready to shape your custom manufacturing request?" }),
     ).toBeInTheDocument();
+  });
+
+  it("places the trusted logo marquee between the hero and announcement trust bar", () => {
+    render(<Home />);
+
+    const heroHeading = screen.getByRole("heading", {
+      level: 1,
+      name: "Custom Patches Made Easy",
+    });
+    const trustedLogoHeadingElement = screen.getByRole("heading", {
+      level: 2,
+      name: trustedLogoHeading,
+    });
+    const trustSignalsRegion = screen.getByRole("region", { name: "Trust signals" });
+
+    expect(
+      heroHeading.compareDocumentPosition(trustedLogoHeadingElement) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(
+      trustedLogoHeadingElement.compareDocumentPosition(trustSignalsRegion) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it("renders category, FAQ, and CTA links accessibly", () => {
