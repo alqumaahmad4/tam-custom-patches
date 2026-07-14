@@ -1,4 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="32" viewBox="0 0 100 32" role="img" aria-labelledby="fedex-title">
-  <title id="fedex-title">FedEx temporary placeholder</title>
-  <path d="M13 22V10h14M13 16h11M36 22V10h14M36 16h11M36 22h14M60 22V10h7a6 6 0 010 12zM79 10l12 12M91 10 79 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9999" height="3063" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="826 1548 9999 3063"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#29007C}
+    .fil0 {fill:#FF5A00}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2274736398176">
+   <g id="_1775886446384">
+    <g id="_1775874991840">
+     <g>
+      <path class="fil0" d="M9941 4504l-409 -460 -407 460 -854 0 835 -938 -835 -939 881 0 414 456 398 -456 849 0 -830 935 842 942 -884 0zm-3310 0l0 -2956 1640 0 0 658 -946 0 0 421 946 0 0 634 -946 0 0 582 946 0 0 661 -1640 0 0 0 0 0z"/>
+     </g>
+     <path class="fil1" d="M5938 1548l0 1210 -8 0c-152,-177 -344,-238 -566,-238 -455,0 -798,309 -918,718 -138,-450 -491,-726 -1016,-726 -426,0 -763,191 -938,502l0 -387 -881 0 0 -421 961 0 0 -658 -1746 0 0 2956 785 0 0 -1243 782 0c-23,94 -36,192 -36,289 0,1 0,2 0,3 0,617 472,1050 1073,1050 505,0 839,-237 1015,-670l-673 0c-91,130 -160,168 -342,168 -211,0 -393,-183 -393,-402l1370 0c59,490 441,912 965,912 226,0 432,-111 558,-299l8 0 0 192 692 0 0 -2956 -692 0 0 0 0 0 0 0 0 0zm-2879 1722c44,-188 189,-310 371,-310 200,0 338,119 374,310l-745 0zm2459 784c-255,0 -413,-238 -413,-486 0,-266 138,-520 413,-520 286,0 400,255 400,520 0,252 -120,486 -400,486z"/>
+    </g>
+   </g>
+  </g>
+ </g>
 </svg>

@@ -13,7 +13,7 @@ export function FooterTrustIcons() {
             <li key={icon.id} className="flex shrink-0 items-center">
               <Image
                 alt={icon.accessibleLabel}
-                className="h-6 w-auto opacity-[var(--opacity-muted-dark)] brightness-0 invert"
+                className="h-6 w-auto object-contain"
                 height={icon.intrinsicHeight}
                 loading="lazy"
                 src={icon.assetPath}

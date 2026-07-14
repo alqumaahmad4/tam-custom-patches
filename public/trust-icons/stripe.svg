@@ -1,5 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="88" height="32" viewBox="0 0 88 32" role="img" aria-labelledby="stripe-title">
-  <title id="stripe-title">Stripe temporary placeholder</title>
-  <path d="M15 11h16M15 16h16M15 21h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  <path d="M43 10h10M48 10v12M62 22V10h7a5 5 0 010 10h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9999" height="4161" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="826 999 9999 4161"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#6772E5}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0" d="M1529 2630c0,-109 88,-150 236,-150 211,0 477,64 689,177l0 -652c-231,-92 -459,-128 -689,-128 -564,0 -939,294 -939,786 0,767 1055,644 1055,975 0,128 -111,169 -266,169 -231,0 -525,-94 -759,-222l0 661c259,111 520,159 759,159 577,0 975,-286 975,-784 -3,-827 -1061,-680 -1061,-991l0 0zm1877 -1309l-677 145 -3 2225c0,411 308,714 719,714 228,0 395,-42 486,-92l0 -564c-89,36 -527,164 -527,-247l0 -986 527 0 0 -592 -527 0 2 -603 0 0 0 0zm1389 809l-44 -206 -600 0 0 2431 694 0 0 -1648c164,-213 442,-175 528,-144l0 -639c-89,-33 -414,-94 -578,206l0 0zm747 -206l698 0 0 2431 -698 0 0 -2431zm0 -211l698 -150 0 -564 -698 147 0 567 0 0zm2148 164c-273,0 -448,128 -545,217l-36 -173 -611 0 0 3239 694 -147 3 -786c100,72 247,175 492,175 497,0 950,-400 950,-1281 -3,-805 -461,-1244 -947,-1244l0 0 0 0zm-167 1914c-164,0 -261,-59 -328,-131l-3 -1030c73,-81 173,-136 331,-136 253,0 428,283 428,647 0,372 -172,650 -428,650l0 0zm3302 -642c0,-711 -344,-1272 -1002,-1272 -661,0 -1061,561 -1061,1267 0,836 472,1258 1150,1258 329,0 579,-75 768,-181l0 -555c-189,94 -405,153 -680,153 -269,0 -508,-95 -538,-423l1357 0c0,-36 6,-180 6,-247l0 0zm-1371 -264c0,-314 191,-444 366,-444 170,0 350,130 350,444l-716 0z"/>
+ </g>
 </svg>

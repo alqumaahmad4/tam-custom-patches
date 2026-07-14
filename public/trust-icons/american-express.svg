@@ -1,5 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="116" height="32" viewBox="0 0 116 32" role="img" aria-labelledby="american-express-title">
-  <title id="american-express-title">American Express temporary placeholder</title>
-  <rect x="1" y="1" width="114" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-  <path d="M15 22l5-12 5 12M17 18h6M34 22V10l7 8 7-8v12M59 22V10h13M59 16h10M59 22h13M82 10l14 12M96 10 82 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5000" height="5000" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="3326 579 5000 5000"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ enable-background="new 0 0 1000 1000">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#006FCF}
+    .fil0 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2274731011088">
+   <g id="_1739528330816">
+    <polygon class="fil0" points="8326,5579 5826,5579 3326,5579 3326,3098 3326,579 5824,579 8326,579 8326,3094 "/>
+    <path class="fil1" d="M3326 579l0 5000 5000 0 0 -792 -662 0 -285 -310 -285 310 -1948 0 0 -1587 -642 0 807 -1828 765 0 223 485 0 -485 923 0 207 518 207 -518 690 0 0 -793 -5000 0zm4461 1045l-241 578 -117 287 -117 -287 -243 -578 -537 0 0 1339 -588 -1339 -457 0 -591 1339 386 0 107 -261 647 0 107 261 389 0 340 0 0 -804 -3 -197 79 197 330 804 301 0 330 -804 78 -197 -3 197 0 804 340 0 0 -1339 -537 0 0 0zm-2156 483l80 -205 80 205 128 311 -415 0 127 -311 0 0zm2168 1093l-412 439 -410 -439 -445 0 634 670 -634 665 435 0 412 -438 410 438 445 0 -633 -670 633 -665 -435 0zm-2387 0l0 1335 1120 0 0 -284 -780 0 0 -241 764 0 0 -283 -764 0 0 -241 780 0 0 -286 -1120 0 0 0zm2537 662l377 389 0 -769 -377 380z"/>
+   </g>
+  </g>
+ </g>
 </svg>

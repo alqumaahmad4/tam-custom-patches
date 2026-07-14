@@ -1,5 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="72" height="32" viewBox="0 0 72 32" role="img" aria-labelledby="ups-title">
-  <title id="ups-title">UPS temporary placeholder</title>
-  <path d="M36 5l17 6v9c0 7-7 11-17 14-10-3-17-7-17-14v-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M27 14v7a4 4 0 008 0v-7M40 23V14h7a4 4 0 010 8h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="4191" height="5000" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="3730 579 4191 5000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#341B14}
+    .fil1 {fill:#FFB406}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2274739490480">
+   <g id="_1775888067088">
+    <path class="fil0" d="M5826 5525c42,-21 1149,-499 1500,-787 361,-297 553,-723 553,-1233l0 -2394 -32 -10c-883,-479 -1979,-447 -2032,-447 -42,0 -1138,-32 -2021,447l-21 10 0 2404c0,511 191,936 553,1234 351,287 1457,766 1500,776z"/>
+    <g>
+     <path class="fil1" d="M5826 5579c0,0 -1170,-511 -1532,-798 -383,-319 -564,-755 -564,-1255l0 -2489c926,-500 2096,-457 2096,-457 0,0 1170,-43 2095,457l0 2478c0,500 -181,936 -564,1255 -361,298 -1531,809 -1531,809l0 0 0 0zm-1925 -2053c0,468 170,851 500,1117 297,244 1180,638 1425,744 244,-106 1138,-510 1425,-744 330,-266 500,-660 500,-1117l0 -2447c-1234,-117 -2702,-53 -3850,1011l0 1436 0 0z"/>
+    </g>
+    <g>
+     <path class="fil1" d="M7006 3175c160,96 224,159 234,276 0,128 -85,202 -223,202 -117,0 -255,-63 -351,-148l0 340c117,64 255,117 404,117 362,0 532,-255 532,-489 11,-213 -53,-383 -362,-564 -138,-85 -244,-138 -244,-266 0,-128 117,-181 213,-181 127,0 255,75 329,149l0 -319c-64,-53 -202,-128 -404,-117 -245,11 -500,181 -500,479 11,202 75,351 372,521l0 0zm-1255 766c32,10 85,21 171,21 414,0 648,-372 648,-904 0,-543 -244,-872 -680,-872 -202,0 -362,42 -500,127l0 2404 361 0 0 -776 0 0zm0 -1447c32,-11 85,-32 128,-32 213,0 298,170 298,585 0,404 -107,596 -319,596 -53,0 -96,-11 -117,-21l0 -1128 10 0zm-1116 1468c223,0 414,-53 553,-149l0 -1606 -373 0 0 1393c-42,32 -95,43 -170,43 -170,0 -191,-160 -191,-255l0 -1181 -373 0 0 1159c0,394 192,596 554,596l0 0z"/>
+    </g>
+   </g>
+  </g>
+ </g>
 </svg>

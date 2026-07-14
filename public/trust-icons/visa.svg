@@ -1,6 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="88" height="32" viewBox="0 0 88 32" role="img" aria-labelledby="visa-title">
-  <title id="visa-title">Visa temporary placeholder</title>
-  <rect x="1" y="1" width="86" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
-  <path d="M14 10l7 12 7-12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M35 10v12M44 10h10l-10 12h10M63 22l5-12 5 12M65 18h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9999" height="3240" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="826 1459 9999 3240"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#1434CB}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0" d="M7339 1459c-710,0 -1344,368 -1344,1048 0,779 1125,833 1125,1225 0,165 -189,313 -512,313 -458,0 -801,-207 -801,-207l-146 686c0,0 394,175 918,175 776,0 1387,-386 1387,-1078 0,-824 -1130,-876 -1130,-1240 0,-129 155,-271 477,-271 364,0 660,150 660,150l143 -662c0,0 -322,-139 -777,-139l0 0zm-6496 50l-17 100c0,0 299,54 568,163 346,125 371,198 429,424l636 2451 852 0 1313 -3138 -850 0 -844 2133 -344 -1808c-32,-207 -192,-325 -388,-325l-1355 0 0 0zm4123 0l-667 3138 811 0 664 -3138 -808 0 0 0zm4522 0c-196,0 -299,104 -375,287l-1188 2851 850 0 165 -475 1036 0 100 475 749 0 -655 -3138 -682 0zm110 848l252 1177 -675 0 422 -1177 1 0z"/>
+ </g>
 </svg>
