@@ -1,0 +1,92 @@
+.viewport {
+  margin-inline: calc(var(--space-6) * -1);
+  overflow: hidden;
+  padding-left: max(var(--space-6), env(safe-area-inset-left));
+  padding-right: max(var(--space-6), env(safe-area-inset-right));
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: footerTrustMarquee 32s linear infinite;
+  will-change: transform;
+}
+
+.logoList {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0 var(--space-8) 0 0;
+  list-style: none;
+}
+
+.viewport:hover .track,
+.viewport:focus-within .track,
+.viewport:active .track {
+  animation-play-state: paused;
+}
+
+@keyframes footerTrustMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    margin-inline: 0;
+    overflow: visible;
+    padding-inline: 0;
+  }
+
+  .track {
+    width: 100%;
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .logoList {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-6);
+    padding-right: 0;
+  }
+
+  .duplicateTrack {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .viewport {
+    margin-inline: 0;
+    overflow: visible;
+    padding-inline: 0;
+  }
+
+  .track {
+    width: 100%;
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .logoList {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+    padding-right: 0;
+  }
+
+  .duplicateTrack {
+    display: none;
+  }
+}

@@ -4,32 +4,47 @@ import { join } from "node:path";
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-import { FooterTrustIcons, footerTrustIcons, footerTrustIconsLabel } from "@/components/footer";
+import {
+  FooterTrustIcons,
+  footerTrustIconAmericanExpressImageClassName,
+  footerTrustIconImageClassName,
+  footerTrustIcons,
+  footerTrustIconsLabel,
+  footerTrustIconSlotClassName,
+  footerTrustMarqueeDuration,
+} from "@/components/footer";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 vi.mock("next/image", () => ({
   default: ({
     alt,
+    "aria-hidden": ariaHidden,
     className,
     height,
     src,
     width,
   }: {
     alt: string;
+    "aria-hidden"?: boolean | "true";
     className?: string;
     height: number;
     src: string;
     width: number;
-  }) => (
-    <span
-      aria-label={alt}
-      className={className}
-      data-height={height}
-      data-src={src}
-      data-width={width}
-      role="img"
-    />
-  ),
+  }) => {
+    const isHidden = ariaHidden === true || ariaHidden === "true";
+
+    return (
+      <span
+        aria-hidden={isHidden ? true : undefined}
+        aria-label={isHidden ? undefined : alt}
+        className={className}
+        data-height={height}
+        data-src={src}
+        data-width={width}
+        role={isHidden ? undefined : "img"}
+      />
+    );
+  },
 }));
 
 const expectedOrder = [
@@ -55,6 +70,17 @@ function getSvgAttribute(asset: string, attribute: string) {
   return match?.[1] ?? "";
 }
 
+function getViewBoxValues(asset: string) {
+  return getSvgAttribute(asset, "viewBox").split(/\s+/).map(Number);
+}
+
+function getTrustStripCss() {
+  return readFileSync(
+    join(process.cwd(), "components", "footer", "footer-trust-icons.module.css"),
+    "utf8",
+  );
+}
+
 describe("footer trust icon strip", () => {
   it("renders all required icons in the exact approved order", () => {
     render(<FooterTrustIcons />);
@@ -66,6 +92,8 @@ describe("footer trust icon strip", () => {
     expect(
       icons.map((icon) => icon.getAttribute("aria-label") ?? icon.getAttribute("alt")),
     ).toEqual([...expectedOrder]);
+
+    expect(region.querySelectorAll("[aria-hidden='true'] [data-src]")).toHaveLength(10);
   });
 
   it("renders no visible heading, wording, links, buttons, or focusable icon controls", () => {
@@ -110,12 +138,11 @@ describe("footer trust icon strip", () => {
   it("uses local SVG files with valid metadata that matches typed dimensions", () => {
     for (const icon of footerTrustIcons) {
       const asset = readFileSync(getAssetPath(icon.assetPath), "utf8");
-      const viewBox = getSvgAttribute(asset, "viewBox");
-      const viewBoxValues = viewBox.split(/\s+/).map(Number);
+      const viewBoxValues = getViewBoxValues(asset);
 
       expect(asset).toContain('xmlns="http://www.w3.org/2000/svg"');
-      expect(asset).toContain(`width="${icon.intrinsicWidth}"`);
-      expect(asset).toContain(`height="${icon.intrinsicHeight}"`);
+      expect(getSvgAttribute(asset, "width")).not.toBe("");
+      expect(getSvgAttribute(asset, "height")).not.toBe("");
       expect(viewBoxValues).toHaveLength(4);
       expect(viewBoxValues.every(Number.isFinite)).toBe(true);
       expect(viewBoxValues[2]).toBe(icon.intrinsicWidth);
@@ -132,7 +159,32 @@ describe("footer trust icon strip", () => {
     }
   });
 
-  it("renders full-color assets without placeholder filter styling", () => {
+  it("documents the supplied shared canvas groups", () => {
+    const canvasGroups = new Map<string, string[]>();
+
+    for (const icon of footerTrustIcons) {
+      const asset = readFileSync(getAssetPath(icon.assetPath), "utf8");
+      const [, , width, height] = getViewBoxValues(asset);
+      const key = `${width}x${height}`;
+
+      canvasGroups.set(key, [...(canvasGroups.get(key) ?? []), icon.name]);
+    }
+
+    expect(canvasGroups.get("11693x16535")).toEqual([
+      "Visa",
+      "Mastercard",
+      "PayPal",
+      "Stripe",
+      "SSL secured connection",
+      "DHL",
+      "FedEx",
+      "UPS",
+      "USPS",
+    ]);
+    expect(canvasGroups.get("8500x11000")).toEqual(["American Express"]);
+  });
+
+  it("renders final assets in equal slots without placeholder filter styling", () => {
     render(<FooterTrustIcons />);
 
     const region = screen.getByRole("region", { name: footerTrustIconsLabel });
@@ -140,13 +192,36 @@ describe("footer trust icon strip", () => {
 
     icons.forEach((icon, index) => {
       const data = footerTrustIcons[index];
+      const slot = icon.closest("li");
 
       expect(icon).toHaveAttribute("data-src", data.assetPath);
       expect(icon).toHaveAttribute("data-width", String(data.intrinsicWidth));
       expect(icon).toHaveAttribute("data-height", String(data.intrinsicHeight));
-      expect(icon).toHaveClass("object-contain");
+      expect(slot).toHaveClass(...footerTrustIconSlotClassName.split(" "));
+      expect(icon).toHaveClass(
+        ...(data.id === "american-express"
+          ? footerTrustIconAmericanExpressImageClassName
+          : footerTrustIconImageClassName
+        ).split(" "),
+      );
       expect(icon.className).not.toMatch(/brightness|invert|grayscale|filter|opacity/i);
     });
+  });
+
+  it("uses desktop space-between layout and a CSS-only mobile marquee", () => {
+    const css = getTrustStripCss();
+
+    expect(footerTrustMarqueeDuration).toBe("32s");
+    expect(css).toContain(
+      `animation: footerTrustMarquee ${footerTrustMarqueeDuration} linear infinite`,
+    );
+    expect(css).toContain("transform: translate3d(-50%, 0, 0)");
+    expect(css).toContain("animation-play-state: paused");
+    expect(css).toContain("@media (prefers-reduced-motion: reduce)");
+    expect(css).toContain("@media (min-width: 1024px)");
+    expect(css).toContain("justify-content: space-between");
+    expect(css).toContain("animation: none");
+    expect(css).not.toMatch(/filter|grayscale|brightness|opacity|box-shadow|border-radius/i);
   });
 
   it("places the strip above the legal and copyright row in the site footer", () => {
