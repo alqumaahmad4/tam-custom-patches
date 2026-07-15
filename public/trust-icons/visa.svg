@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Creator: CorelDRAW X7 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9999" height="3240" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="826 1459 9999 3240"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="11.6929in" height="16.5354in" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 11693 16535"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <style type="text/css">
    <![CDATA[
-    .fil0 {fill:#1434CB}
+    .fil1 {fill:#1434CB}
+    .fil0 {fill:white}
    ]]>
   </style>
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <path class="fil0" d="M7339 1459c-710,0 -1344,368 -1344,1048 0,779 1125,833 1125,1225 0,165 -189,313 -512,313 -458,0 -801,-207 -801,-207l-146 686c0,0 394,175 918,175 776,0 1387,-386 1387,-1078 0,-824 -1130,-876 -1130,-1240 0,-129 155,-271 477,-271 364,0 660,150 660,150l143 -662c0,0 -322,-139 -777,-139l0 0zm-6496 50l-17 100c0,0 299,54 568,163 346,125 371,198 429,424l636 2451 852 0 1313 -3138 -850 0 -844 2133 -344 -1808c-32,-207 -192,-325 -388,-325l-1355 0 0 0zm4123 0l-667 3138 811 0 664 -3138 -808 0 0 0zm4522 0c-196,0 -299,104 -375,287l-1188 2851 850 0 165 -475 1036 0 100 475 749 0 -655 -3138 -682 0zm110 848l252 1177 -675 0 422 -1177 1 0z"/>
+  <rect class="fil0" x="2826" y="2782" width="6000" height="4000" rx="272" ry="300"/>
+  <path class="fil1" d="M6464 4098c-299,0 -567,156 -567,442 0,329 475,352 475,517 0,70 -80,132 -216,132 -194,0 -338,-87 -338,-87l-62 290c0,0 166,73 387,73 328,0 586,-162 586,-454 0,-348 -477,-370 -477,-524 0,-54 65,-114 201,-114 154,0 279,63 279,63l60 -279c0,0 -136,-59 -328,-59l0 0 0 0zm-2741 21l-7 43c0,0 126,22 240,68 146,53 156,84 181,179l268 1034 359 0 555 -1324 -359 0 -356 900 -145 -763c-14,-87 -81,-137 -164,-137l-572 0 0 0 0 0zm1740 0l-282 1324 343 0 280 -1324 -341 0 0 0zm1908 0c-83,0 -126,44 -158,121l-502 1203 359 0 70 -200 437 0 42 200 316 0 -276 -1324 -288 0 0 0zm46 358l107 497 -285 0 178 -497 0 0z"/>
  </g>
 </svg>

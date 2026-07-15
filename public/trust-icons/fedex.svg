@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Creator: CorelDRAW X7 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9999" height="3063" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="826 1548 9999 3063"
- xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="11.6929in" height="16.5354in" preserveAspectRatio="xMidYMid meet" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 11693 16535"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ enable-background="new 0 0 1000 1000">
  <defs>
   <style type="text/css">
    <![CDATA[
-    .fil1 {fill:#29007C}
-    .fil0 {fill:#FF5A00}
+    .fil2 {fill:#29007C}
+    .fil1 {fill:#FF5A00}
+    .fil0 {fill:white}
    ]]>
   </style>
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_2274736398176">
-   <g id="_1775886446384">
-    <g id="_1775874991840">
-     <g>
-      <path class="fil0" d="M9941 4504l-409 -460 -407 460 -854 0 835 -938 -835 -939 881 0 414 456 398 -456 849 0 -830 935 842 942 -884 0zm-3310 0l0 -2956 1640 0 0 658 -946 0 0 421 946 0 0 634 -946 0 0 582 946 0 0 661 -1640 0 0 0 0 0z"/>
+  <rect class="fil0" x="2826" y="2782" width="6000" height="4000" rx="272" ry="300"/>
+  <g id="_2535102208480">
+   <g id="_2274736398176">
+    <g id="_1775886446384">
+     <g id="_1775874991840">
+      <g>
+       <path class="fil1" d="M7841 5479l-201 -225 -199 225 -418 0 409 -459 -409 -460 431 0 203 224 195 -224 416 0 -407 458 413 461 -433 0 0 0zm-1621 0l0 -1447 803 0 0 322 -463 0 0 206 463 0 0 311 -463 0 0 285 463 0 0 323 -803 0 0 0 0 0z"/>
+      </g>
+      <path class="fil2" d="M5881 4032l0 592 -4 0c-75,-86 -169,-116 -277,-116 -223,0 -391,151 -450,351 -68,-220 -240,-355 -497,-355 -209,0 -374,93 -460,246l0 -190 -431 0 0 -206 470 0 0 -322 -854 0 0 1447 384 0 0 -608 383 0c-11,46 -18,94 -18,141 0,1 0,1 0,2 0,302 231,514 526,514 247,0 410,-116 497,-328l-330 0c-45,63 -78,82 -167,82 -104,0 -193,-90 -193,-197l671 0c29,240 216,447 472,447 111,0 212,-55 274,-147l4 0 0 94 338 0 0 -1447 -338 0 0 0 0 0 0 0 0 0 0 0zm-1410 843c21,-92 92,-152 182,-152 98,0 165,59 183,152l-365 0zm1204 384c-125,0 -202,-117 -202,-238 0,-130 67,-255 202,-255 140,0 196,125 196,255 0,123 -59,238 -196,238z"/>
      </g>
-     <path class="fil1" d="M5938 1548l0 1210 -8 0c-152,-177 -344,-238 -566,-238 -455,0 -798,309 -918,718 -138,-450 -491,-726 -1016,-726 -426,0 -763,191 -938,502l0 -387 -881 0 0 -421 961 0 0 -658 -1746 0 0 2956 785 0 0 -1243 782 0c-23,94 -36,192 -36,289 0,1 0,2 0,3 0,617 472,1050 1073,1050 505,0 839,-237 1015,-670l-673 0c-91,130 -160,168 -342,168 -211,0 -393,-183 -393,-402l1370 0c59,490 441,912 965,912 226,0 432,-111 558,-299l8 0 0 192 692 0 0 -2956 -692 0 0 0 0 0 0 0 0 0zm-2879 1722c44,-188 189,-310 371,-310 200,0 338,119 374,310l-745 0zm2459 784c-255,0 -413,-238 -413,-486 0,-266 138,-520 413,-520 286,0 400,255 400,520 0,252 -120,486 -400,486z"/>
     </g>
    </g>
   </g>
