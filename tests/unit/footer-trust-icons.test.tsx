@@ -234,4 +234,16 @@ describe("footer trust icon strip", () => {
       trustStrip.compareDocumentPosition(legalLinks) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
   });
+
+  it("keeps only the divider above the trust strip and not between logos and legal links", () => {
+    render(<SiteFooter />);
+
+    const trustStrip = screen.getByRole("region", { name: footerTrustIconsLabel });
+    const legalLinks = screen.getByRole("navigation", { name: "Legal links" });
+    const legalRow = legalLinks.closest("div");
+
+    expect(trustStrip).toHaveClass("border-t");
+    expect(legalRow).not.toHaveClass("border-t");
+    expect(legalRow).toHaveClass("mt-4");
+  });
 });

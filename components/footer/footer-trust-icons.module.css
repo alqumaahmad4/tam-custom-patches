@@ -67,7 +67,8 @@
 
 @media (min-width: 1024px) {
   .viewport {
-    margin-inline: 0;
+    width: calc(100% + (var(--space-4) * 2));
+    margin-inline: calc(var(--space-4) * -1);
     overflow: visible;
     padding-inline: 0;
   }

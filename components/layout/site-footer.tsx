@@ -43,7 +43,7 @@ export function SiteFooter() {
 
         <FooterTrustIcons />
 
-        <div className="border-muted/30 text-muted-light mt-12 flex flex-col gap-4 border-t pt-6 text-xs md:flex-row md:items-center md:justify-between">
+        <div className="text-muted-light mt-4 flex flex-col gap-4 text-xs md:flex-row md:items-center md:justify-between">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
