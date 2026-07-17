@@ -3,6 +3,7 @@ import type { SVGProps } from "react";
 
 import type { TrustedLogoItem as TrustedLogoItemType, TrustedLogoMotif } from "./data";
 
+import { getLinkPrefetch } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type TrustedLogoItemProps = {
@@ -182,6 +183,7 @@ export function TrustedLogoItem({ logo, isDuplicate = false }: TrustedLogoItemPr
         aria-label={logo.accessibleLabel}
         className={cn(logoItemClasses, "focus-visible:ring-ring focus-visible:ring-2")}
         href={logo.href}
+        prefetch={getLinkPrefetch(logo.href)}
         tabIndex={isDuplicate ? -1 : undefined}
       >
         <GeneratedLogoMark logo={logo} />

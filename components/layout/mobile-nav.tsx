@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Search, Sparkles } from "lucide-react";
+import { ArrowRight, Menu, Search, Sparkles } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import {
@@ -22,7 +22,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { navigationGroups, productNavigationGroups } from "@/lib/navigation";
-import { routes } from "@/lib/site-config";
+import { getLinkPrefetch, routes } from "@/lib/site-config";
 
 type MobileNavProps = {
   open: boolean;
@@ -78,6 +78,7 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
                           <SheetClose asChild>
                             <Link
                               href={group.href}
+                              prefetch={getLinkPrefetch(group.href)}
                               className="text-primary flex min-h-11 items-center rounded-md px-3 text-sm font-semibold focus-visible:outline-none"
                             >
                               {group.label} overview
@@ -93,6 +94,7 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
                             <SheetClose asChild>
                               <Link
                                 href={link.href}
+                                prefetch={getLinkPrefetch(link.href)}
                                 className="hover:bg-secondary flex min-h-11 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
                               >
                                 {Icon ? (
@@ -131,14 +133,16 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
               </li>
               <li>
                 <SheetClose asChild>
-                  <Link
-                    href={routes.aiDesigner}
-                    aria-label="Open AI Design Studio"
-                    className="hover:bg-secondary focus-visible:ring-ring flex min-h-[52px] items-center rounded-md px-3 text-base font-medium transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-                  >
-                    <Sparkles aria-hidden="true" className="text-primary mr-3 size-4" />
-                    AI Design Studio
-                  </Link>
+                  <Button asChild variant="premiumOutline" className="w-full justify-start">
+                    <Link
+                      href={routes.aiDesigner}
+                      prefetch={getLinkPrefetch(routes.aiDesigner)}
+                      aria-label="Open AI Design Studio"
+                    >
+                      <Sparkles aria-hidden="true" className="size-4" />
+                      AI Design Studio
+                    </Link>
+                  </Button>
                 </SheetClose>
               </li>
             </ul>
@@ -152,10 +156,14 @@ export function MobileNav({ open, onOpenChange, onSearch }: MobileNavProps) {
           <SheetClose asChild>
             <Button
               asChild
-              className="h-12 w-full rounded-md"
+              variant="premiumPrimary"
+              className="w-full"
               aria-describedby={quoteDescriptionId}
             >
-              <Link href={routes.quote}>Get a Quote</Link>
+              <Link href={routes.quote}>
+                Get a Quote
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
             </Button>
           </SheetClose>
           <p className="text-muted-foreground text-center text-xs">Worldwide shipping available</p>
@@ -185,6 +193,7 @@ function ProductsMobileAccordion() {
                     <SheetClose asChild>
                       <Link
                         href={link.href}
+                        prefetch={getLinkPrefetch(link.href)}
                         className="hover:bg-secondary flex min-h-11 items-center rounded-md px-3 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
                       >
                         {link.label}
@@ -196,6 +205,7 @@ function ProductsMobileAccordion() {
                   <SheetClose asChild>
                     <Link
                       href={productGroup.href}
+                      prefetch={getLinkPrefetch(productGroup.href)}
                       className="text-primary hover:bg-secondary flex min-h-11 items-center rounded-md px-3 text-sm font-semibold transition-colors duration-150 focus-visible:outline-none"
                     >
                       {productGroup.viewAllLabel}

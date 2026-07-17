@@ -14,6 +14,7 @@ import {
   type ProductMegaMenuAction,
   type ProductNavigationGroup,
 } from "@/lib/navigation";
+import { getLinkPrefetch } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type DesktopMegaMenuProps = {
@@ -259,6 +260,7 @@ function ProductGroupColumn({
           <li key={`${group.id}-${link.href}-${link.label}`}>
             <Link
               href={link.href}
+              prefetch={getLinkPrefetch(link.href)}
               className="hover:bg-secondary hover:text-primary flex min-h-10 items-center rounded-md px-2 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
               onClick={onNavigate}
             >
@@ -269,6 +271,7 @@ function ProductGroupColumn({
         <li className="border-border mt-2 border-t pt-2">
           <Link
             href={group.href}
+            prefetch={getLinkPrefetch(group.href)}
             className="text-primary hover:bg-secondary flex min-h-10 items-center rounded-md px-2 text-sm font-semibold transition-colors duration-150 focus-visible:outline-none"
             onClick={onNavigate}
           >
@@ -289,9 +292,10 @@ function ProductMegaMenuActionLink({
 }) {
   if (action.variant === "primary") {
     return (
-      <Button asChild className="h-10 rounded-md px-4">
-        <Link href={action.href} onClick={onNavigate}>
+      <Button asChild variant="premiumPrimary">
+        <Link href={action.href} prefetch={getLinkPrefetch(action.href)} onClick={onNavigate}>
           {action.label}
+          <ArrowRight aria-hidden="true" className="size-4" />
         </Link>
       </Button>
     );
@@ -299,8 +303,8 @@ function ProductMegaMenuActionLink({
 
   if (action.variant === "secondary") {
     return (
-      <Button asChild variant="outline" className="h-10 rounded-md px-4">
-        <Link href={action.href} onClick={onNavigate}>
+      <Button asChild variant="premiumOutline">
+        <Link href={action.href} prefetch={getLinkPrefetch(action.href)} onClick={onNavigate}>
           {action.label}
         </Link>
       </Button>
@@ -310,6 +314,7 @@ function ProductMegaMenuActionLink({
   return (
     <Link
       href={action.href}
+      prefetch={getLinkPrefetch(action.href)}
       className="text-primary inline-flex min-h-10 items-center gap-2 rounded-md text-sm font-semibold transition-colors duration-150 hover:underline focus-visible:outline-none"
       onClick={onNavigate}
     >
@@ -331,6 +336,7 @@ function SimpleMegaMenu({ group, onNavigate }: { group: NavigationGroup; onNavig
         </div>
         <Link
           href={group.href}
+          prefetch={getLinkPrefetch(group.href)}
           className="text-primary hidden min-h-10 shrink-0 items-center gap-2 rounded-md text-sm font-semibold hover:underline focus-visible:outline-none md:inline-flex"
           onClick={onNavigate}
         >
@@ -364,6 +370,7 @@ function SimpleMegaMenuLink({
     <li>
       <Link
         href={link.href}
+        prefetch={getLinkPrefetch(link.href)}
         className="hover:bg-secondary group flex min-h-14 items-start gap-3 rounded-md p-3 transition-colors duration-150 focus-visible:outline-none"
         onClick={onNavigate}
       >

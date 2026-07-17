@@ -105,11 +105,14 @@ describe("navigation system", () => {
 
     expect(screen.getByRole("button", { name: "Open search" })).toBeInTheDocument();
     expect(screen.getByText("AI Design Studio")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Open AI Design Studio" })).toHaveAttribute(
-      "href",
-      routes.aiDesigner,
-    );
-    expect(screen.getByRole("link", { name: "Get a Quote" })).toHaveAttribute("href", routes.quote);
+    const aiStudioLink = screen.getByRole("link", { name: "Open AI Design Studio" });
+    const quoteLink = screen.getByRole("link", { name: "Get a Quote" });
+
+    expect(aiStudioLink).toHaveAttribute("href", routes.aiDesigner);
+    expect(aiStudioLink).toHaveClass("premium-button-outline");
+    expect(quoteLink).toHaveAttribute("href", routes.quote);
+    expect(quoteLink).toHaveClass("premium-button-primary");
+    expect(quoteLink.querySelector('svg[aria-hidden="true"]')).not.toBeNull();
   });
 
   it("opens the products mega menu with approved groups and footer actions", () => {
@@ -136,18 +139,16 @@ describe("navigation system", () => {
       within(patchesSection).getByRole("link", { name: "Embroidered Patches" }),
     ).toHaveAttribute("href", routes.embroideredPatches);
 
-    expect(within(submenu).getByRole("link", { name: "Explore All Products" })).toHaveAttribute(
-      "href",
-      routes.products,
-    );
-    expect(within(submenu).getByRole("link", { name: "Design Your Own Patch" })).toHaveAttribute(
-      "href",
-      routes.designYourOwnPatch,
-    );
-    expect(within(submenu).getByRole("link", { name: "Get a Quote" })).toHaveAttribute(
-      "href",
-      routes.quote,
-    );
+    const allProductsLink = within(submenu).getByRole("link", { name: "Explore All Products" });
+    const designPatchLink = within(submenu).getByRole("link", { name: "Design Your Own Patch" });
+    const quoteActionLink = within(submenu).getByRole("link", { name: "Get a Quote" });
+
+    expect(allProductsLink).toHaveAttribute("href", routes.products);
+    expect(allProductsLink).not.toHaveClass("premium-button");
+    expect(designPatchLink).toHaveAttribute("href", routes.designYourOwnPatch);
+    expect(designPatchLink).toHaveClass("premium-button-outline");
+    expect(quoteActionLink).toHaveAttribute("href", routes.quote);
+    expect(quoteActionLink).toHaveClass("premium-button-primary");
 
     expect(productsMegaMenuActions.map((action) => action.label)).toEqual([
       "Explore All Products",
@@ -218,14 +219,16 @@ describe("navigation system", () => {
       within(drawer).getByRole("link", { name: "View All Martial Arts Products" }),
     ).toHaveAttribute("href", routes.martialArts);
     expect(within(drawer).getByRole("button", { name: "Search" })).toBeInTheDocument();
-    expect(within(drawer).getByRole("link", { name: "Open AI Design Studio" })).toHaveAttribute(
-      "href",
-      routes.aiDesigner,
-    );
-    expect(within(drawer).getByRole("link", { name: "Get a Quote" })).toHaveAttribute(
-      "href",
-      routes.quote,
-    );
+    const drawerAiStudioLink = within(drawer).getByRole("link", {
+      name: "Open AI Design Studio",
+    });
+    const drawerQuoteLink = within(drawer).getByRole("link", { name: "Get a Quote" });
+
+    expect(drawerAiStudioLink).toHaveAttribute("href", routes.aiDesigner);
+    expect(drawerAiStudioLink).toHaveClass("premium-button-outline");
+    expect(drawerQuoteLink).toHaveAttribute("href", routes.quote);
+    expect(drawerQuoteLink).toHaveClass("premium-button-primary");
+    expect(drawerQuoteLink.querySelector('svg[aria-hidden="true"]')).not.toBeNull();
   });
 
   it("opens search from the mobile drawer quick action", async () => {
@@ -280,6 +283,10 @@ describe("navigation system", () => {
       name: searchboxName,
     });
     expect(screen.getByText("Popular searches")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "AI Design Studio" })).toHaveClass("rounded-md");
+    expect(screen.getByRole("button", { name: "AI Design Studio" })).not.toHaveClass(
+      "rounded-full",
+    );
 
     fireEvent.change(searchbox, { target: { value: "AI Design Studio" } });
 

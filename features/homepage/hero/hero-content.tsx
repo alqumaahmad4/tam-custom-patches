@@ -53,7 +53,7 @@ export function HeroContent({
         {slide.description}
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-8">
-        <Button asChild size="lg" className="min-h-[52px] px-6 text-base">
+        <Button asChild variant="premiumPrimary">
           <Link href={slide.primaryCta.href} onClick={onInteract}>
             {slide.primaryCta.label}
             <ArrowRight aria-hidden="true" className="size-4" />
@@ -61,17 +61,12 @@ export function HeroContent({
         </Button>
         <Button
           asChild
-          size="lg"
-          variant="outline"
-          className={cn(
-            "min-h-[52px] px-6 text-base shadow-sm",
-            isDark
-              ? "border-surface/30 bg-surface/10 text-surface hover:bg-surface/15 hover:text-surface"
-              : "border-border bg-surface text-foreground hover:text-primary",
-          )}
+          variant="premiumOutline"
+          className={cn(isDark ? "premium-button-on-dark" : null)}
         >
           <Link href={slide.secondaryCta.href} onClick={onInteract}>
             {slide.secondaryCta.label}
+            <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </Button>
       </div>

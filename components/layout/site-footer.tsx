@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FooterTrustIcons } from "@/components/footer";
 import { FooterWordmark } from "@/components/layout/brand-logo";
 import { footerNavigation, legalNavigationLinks } from "@/lib/navigation";
-import { siteConfig } from "@/lib/site-config";
+import { getLinkPrefetch, siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
   return (
@@ -30,6 +30,7 @@ export function SiteFooter() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
+                      prefetch={getLinkPrefetch(link.href)}
                       className="text-surface hover:text-muted-light text-sm transition-colors duration-150 focus-visible:outline-none"
                     >
                       {link.label}
@@ -53,6 +54,7 @@ export function SiteFooter() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    prefetch={getLinkPrefetch(link.href)}
                     className="hover:text-surface transition-colors duration-150 focus-visible:outline-none"
                   >
                     {link.label}

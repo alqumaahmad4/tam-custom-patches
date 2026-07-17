@@ -95,3 +95,11 @@ export const routes = {
   accessibility: "/accessibility",
   sitemap: "/sitemap",
 } as const;
+
+const prefetchableRoutePaths = new Set<string>([routes.home, routes.quote]);
+
+export function getLinkPrefetch(href: string) {
+  const [path = ""] = href.split(/[?#]/);
+
+  return prefetchableRoutePaths.has(path) ? undefined : false;
+}

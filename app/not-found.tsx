@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { routes } from "@/lib/site-config";
+import { getLinkPrefetch, routes } from "@/lib/site-config";
 
 export default function NotFound() {
   return (
@@ -23,17 +23,19 @@ export default function NotFound() {
         The URL may have changed or the page may have moved. Let&apos;s get you back on track.
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Button asChild>
+        <Button asChild variant="premiumPrimary">
           <Link href={routes.home}>
             <ArrowLeft aria-hidden="true" />
             Back to Homepage
           </Link>
         </Button>
-        <Button asChild variant="outline">
-          <Link href={routes.customPatches}>Browse Products</Link>
+        <Button asChild variant="premiumOutline">
+          <Link href={routes.customPatches} prefetch={getLinkPrefetch(routes.customPatches)}>
+            Browse Products
+          </Link>
         </Button>
-        <Button asChild variant="link">
-          <Link href={routes.contact}>
+        <Button asChild variant="premiumGhost">
+          <Link href={routes.contact} prefetch={getLinkPrefetch(routes.contact)}>
             <Mail aria-hidden="true" />
             Contact Us
           </Link>

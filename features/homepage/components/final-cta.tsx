@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { routes } from "@/lib/site-config";
+import { getLinkPrefetch, routes } from "@/lib/site-config";
 
 export function FinalCta() {
   return (
@@ -23,19 +23,14 @@ export function FinalCta() {
             with the right context.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg" className="rounded-full">
+            <Button asChild variant="premiumPrimary">
               <Link href={routes.quote}>
                 Get a Quote
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-border text-foreground hover:bg-secondary hover:text-foreground rounded-full bg-transparent"
-            >
-              <Link href={routes.contact}>
+            <Button asChild variant="premiumOutline">
+              <Link href={routes.contact} prefetch={getLinkPrefetch(routes.contact)}>
                 <MessageCircle aria-hidden="true" className="size-4" />
                 Talk to support
               </Link>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowLeft, Search, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, Search, ShieldCheck } from "lucide-react";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -11,7 +11,7 @@ import { DesktopMegaMenu } from "@/components/navigation/desktop-mega-menu";
 import { SearchOverlay } from "@/components/navigation/search-overlay";
 import { Button } from "@/components/ui/button";
 import { navigationGroups, tabletNavigation } from "@/lib/navigation";
-import { routes } from "@/lib/site-config";
+import { getLinkPrefetch, routes } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 const quoteDescriptionId = "header-quote-description";
@@ -64,7 +64,7 @@ export function SiteHeader() {
               <ShieldCheck aria-hidden="true" className="text-primary size-4" />
               Secure quote
             </span>
-            <Button asChild variant="outline" className="h-11 rounded-full px-4">
+            <Button asChild variant="premiumGhost">
               <Link href={routes.home}>
                 <ArrowLeft aria-hidden="true" className="size-4" />
                 <span className="hidden sm:inline">Back to site</span>
@@ -113,6 +113,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={getLinkPrefetch(item.href)}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "hover:text-primary rounded-sm text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none",
@@ -141,27 +142,25 @@ export function SiteHeader() {
           </button>
           <Button
             asChild
-            variant="outline"
-            className={cn(
-              "hidden h-10 rounded-md px-4 xl:inline-flex",
-              isSolid
-                ? "bg-background/70 text-foreground hover:text-primary"
-                : "border-surface/40 text-surface hover:bg-surface/10 hover:text-surface bg-transparent",
-            )}
+            variant="premiumOutline"
+            className={cn("hidden xl:inline-flex", isSolid ? null : "premium-button-on-dark")}
           >
-            <Link href={routes.aiDesigner} aria-label="Open AI Design Studio">
+            <Link
+              href={routes.aiDesigner}
+              prefetch={getLinkPrefetch(routes.aiDesigner)}
+              aria-label="Open AI Design Studio"
+            >
               AI Design Studio
             </Link>
           </Button>
           <span id={quoteDescriptionId} className="sr-only">
             Request custom manufacturing pricing.
           </span>
-          <Button
-            asChild
-            className="h-10 rounded-md px-3 sm:px-4"
-            aria-describedby={quoteDescriptionId}
-          >
-            <Link href={routes.quote}>Get a Quote</Link>
+          <Button asChild variant="premiumPrimary" aria-describedby={quoteDescriptionId}>
+            <Link href={routes.quote}>
+              Get a Quote
+              <ArrowRight aria-hidden="true" className="size-4" />
+            </Link>
           </Button>
           <MobileNav
             open={mobileOpen}

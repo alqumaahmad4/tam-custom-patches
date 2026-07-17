@@ -205,6 +205,20 @@ describe("quote wizard", () => {
     expect(mobileSummaryText?.closest("details")).toBeInTheDocument();
   });
 
+  it("uses the premium hierarchy only for quote navigation actions", async () => {
+    render(<QuoteWizard />);
+
+    expect(screen.getByRole("button", { name: /continue/i })).toHaveClass("premium-button-primary");
+    expect(screen.getByRole("button", { name: /back/i })).toHaveClass("premium-button-ghost");
+
+    await completeFirstThreeSteps();
+
+    expect(screen.getByRole("button", { name: "Browse" })).not.toHaveClass("premium-button");
+    expect(screen.getByRole("button", { name: "Send artwork later" })).not.toHaveClass(
+      "premium-button",
+    );
+  });
+
   it("uses checked radio state for card selections and supports keyboard movement", () => {
     render(<QuoteWizard />);
 

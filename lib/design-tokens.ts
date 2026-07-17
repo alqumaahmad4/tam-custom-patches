@@ -243,12 +243,35 @@ export const motionTokens = {
   },
 } as const;
 
+export const premiumButtonTokens = {
+  height: "44px",
+  paddingX: "16px",
+  radius: radius.md,
+  fontSize: "15px",
+  fontWeight: typography.fontWeight.semibold,
+  letterSpacing: "0",
+  iconGap: "6px",
+  gradient: {
+    angle: "135deg",
+    from: brandColors.accent,
+    highlight: "#27B5E8",
+    to: brandColors.accentDark,
+  },
+  foreground: brandColors.surface,
+  hoverLift: "-1px",
+  arrowTranslate: "3px",
+  transitionDuration: motionTokens.durationMs.base,
+} as const;
+
 export const designTokens = {
   colors: {
     v3: v3ColorCustomProperties,
     brand: brandColors,
     neutral: neutralColors,
     semantic: semanticColors,
+  },
+  components: {
+    premiumButton: premiumButtonTokens,
   },
   typography,
   spacing,

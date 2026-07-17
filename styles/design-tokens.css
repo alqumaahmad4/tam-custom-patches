@@ -383,6 +383,34 @@
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
   --focus-ring-color: var(--color-border-focus);
+
+  /* Premium CTA button system */
+  --button-premium-height: 44px;
+  --button-premium-padding-x: 16px;
+  --button-premium-radius: var(--radius-md);
+  --button-premium-font-size: 15px;
+  --button-premium-font-weight: var(--font-weight-semibold);
+  --button-premium-letter-spacing: 0;
+  --button-premium-icon-gap: 6px;
+  --button-premium-gradient-angle: 135deg;
+  --button-premium-gradient-from: var(--color-accent);
+  --button-premium-gradient-highlight: #27b5e8;
+  --button-premium-gradient-to: var(--color-accent-dark);
+  --button-premium-foreground: var(--color-surface);
+  --button-premium-border: rgba(255, 255, 255, 0.18);
+  --button-premium-shadow: 0 1px 2px rgba(10, 10, 10, 0.08), 0 6px 14px rgba(26, 86, 219, 0.12);
+  --button-premium-outline-surface: rgba(255, 255, 255, 0.72);
+  --button-premium-outline-surface-hover: rgba(255, 255, 255, 0.94);
+  --button-premium-outline-foreground: var(--color-accent-dark);
+  --button-premium-outline-border-from: var(--color-accent);
+  --button-premium-outline-border-to: var(--button-premium-gradient-highlight);
+  --button-premium-ghost-foreground: var(--color-accent-dark);
+  --button-premium-ghost-hover-bg: var(--color-tag-bg);
+  --button-premium-ghost-hover-foreground: var(--color-accent-dark);
+  --button-premium-hover-lift: -1px;
+  --button-premium-arrow-translate: 3px;
+  --button-premium-background-size: 140% 100%;
+  --button-premium-transition-duration: var(--duration-base);
 }
 
 .dark {

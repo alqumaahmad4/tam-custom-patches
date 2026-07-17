@@ -59,6 +59,127 @@
   }
 }
 
+@layer components {
+  .premium-button {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    gap: var(--button-premium-icon-gap);
+    border: 1px solid transparent;
+    border-radius: var(--button-premium-radius);
+    font-family: var(--font-family-sans);
+    font-weight: var(--button-premium-font-weight);
+    letter-spacing: var(--button-premium-letter-spacing);
+    transition:
+      transform var(--button-premium-transition-duration) var(--ease-out),
+      background-position var(--button-premium-transition-duration) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out),
+      box-shadow var(--button-premium-transition-duration) var(--ease-out);
+  }
+
+  .premium-button > svg:last-child {
+    transition: transform var(--button-premium-transition-duration) var(--ease-out);
+  }
+
+  .premium-button:where(:not(:disabled, [aria-disabled="true"])):hover {
+    transform: translateY(var(--button-premium-hover-lift));
+  }
+
+  .premium-button:where(:not(:disabled, [aria-disabled="true"])):hover > svg:last-child {
+    transform: translateX(var(--button-premium-arrow-translate));
+  }
+
+  .premium-button-primary {
+    border-color: var(--button-premium-border);
+    background-image: linear-gradient(
+      var(--button-premium-gradient-angle),
+      var(--button-premium-gradient-from) 0%,
+      var(--button-premium-gradient-highlight) 52%,
+      var(--button-premium-gradient-to) 100%
+    );
+    background-position: 0% 50%;
+    background-size: var(--button-premium-background-size);
+    box-shadow: var(--button-premium-shadow);
+    color: var(--button-premium-foreground);
+  }
+
+  .premium-button-primary:where(:not(:disabled, [aria-disabled="true"])):hover {
+    background-position: 100% 50%;
+  }
+
+  .premium-button-outline {
+    border-color: transparent;
+    background:
+      linear-gradient(var(--button-premium-outline-surface), var(--button-premium-outline-surface))
+        padding-box,
+      linear-gradient(
+          var(--button-premium-gradient-angle),
+          var(--button-premium-outline-border-from),
+          var(--button-premium-outline-border-to)
+        )
+        border-box;
+    box-shadow: none;
+    color: var(--button-premium-outline-foreground);
+  }
+
+  .premium-button-outline:where(:not(:disabled, [aria-disabled="true"])):hover {
+    background:
+      linear-gradient(
+          var(--button-premium-outline-surface-hover),
+          var(--button-premium-outline-surface-hover)
+        )
+        padding-box,
+      linear-gradient(
+          var(--button-premium-gradient-angle),
+          var(--button-premium-outline-border-to),
+          var(--button-premium-outline-border-from)
+        )
+        border-box;
+  }
+
+  .premium-button-ghost {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    color: var(--button-premium-ghost-foreground);
+  }
+
+  .premium-button-ghost:where(:not(:disabled, [aria-disabled="true"])):hover {
+    background: var(--button-premium-ghost-hover-bg);
+    color: var(--button-premium-ghost-hover-foreground);
+  }
+
+  .dark .premium-button-outline,
+  .bg-dark-bg .premium-button-outline,
+  .premium-button-on-dark {
+    --button-premium-outline-surface: rgba(255, 255, 255, 0.08);
+    --button-premium-outline-surface-hover: rgba(255, 255, 255, 0.12);
+    --button-premium-outline-foreground: var(--color-surface);
+    --button-premium-ghost-foreground: var(--color-surface);
+    --button-premium-ghost-hover-bg: rgba(255, 255, 255, 0.08);
+    --button-premium-ghost-hover-foreground: var(--color-surface);
+  }
+
+  .premium-button:where(:disabled, [aria-disabled="true"]) {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .premium-button,
+    .premium-button > svg:last-child {
+      transition: none;
+    }
+
+    .premium-button:where(:not(:disabled, [aria-disabled="true"])):hover,
+    .premium-button:where(:not(:disabled, [aria-disabled="true"])):hover > svg:last-child {
+      transform: none;
+    }
+  }
+}
+
 @layer utilities {
   @keyframes trusted-logo-marquee {
     from {

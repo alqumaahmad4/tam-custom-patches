@@ -244,19 +244,24 @@ export function QuoteWizard() {
                 />
                 <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between lg:mt-0">
                   <div className="flex gap-3">
-                    <Button type="button" variant="outline" disabled={isFirstStep} onClick={goBack}>
+                    <Button
+                      type="button"
+                      variant="premiumGhost"
+                      disabled={isFirstStep}
+                      onClick={goBack}
+                    >
                       <ChevronLeft aria-hidden="true" className="size-4" />
                       Back
                     </Button>
                     {isReviewStep ? (
-                      <Button type="button" variant="ghost" onClick={restart}>
+                      <Button type="button" variant="premiumGhost" onClick={restart}>
                         <RotateCcw aria-hidden="true" className="size-4" />
                         Start over
                       </Button>
                     ) : null}
                   </div>
                   {!isReviewStep ? (
-                    <Button type="button" className="min-h-11" onClick={goNext}>
+                    <Button type="button" variant="premiumPrimary" onClick={goNext}>
                       Continue
                       <ChevronRight aria-hidden="true" className="size-4" />
                     </Button>

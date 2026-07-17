@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { HomeSection } from "@/features/homepage/components/home-section";
 import { PlaceholderVisual } from "@/features/homepage/components/placeholder-visual";
 import { blogPreviewArticles } from "@/features/homepage/data";
+import { getLinkPrefetch } from "@/lib/site-config";
 
 export function BlogPreview() {
   return (
@@ -32,6 +33,7 @@ export function BlogPreview() {
               <p className="text-muted-foreground mt-3 text-sm leading-6">{article.excerpt}</p>
               <Link
                 href={article.href}
+                prefetch={getLinkPrefetch(article.href)}
                 className="text-primary mt-5 inline-flex items-center gap-2 rounded-sm text-sm font-semibold underline-offset-4 hover:underline"
               >
                 Read preview

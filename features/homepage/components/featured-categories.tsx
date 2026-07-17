@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { HomeSection } from "@/features/homepage/components/home-section";
 import { PlaceholderVisual } from "@/features/homepage/components/placeholder-visual";
 import { featuredCategories } from "@/features/homepage/data";
+import { getLinkPrefetch } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 export function FeaturedCategories() {
@@ -19,6 +20,7 @@ export function FeaturedCategories() {
           <Link
             key={category.title}
             href={category.href}
+            prefetch={getLinkPrefetch(category.href)}
             aria-label={`${category.title} category`}
             className={cn(
               "group bg-card text-card-foreground focus-visible:ring-ring overflow-hidden rounded-lg border shadow-sm outline-none [transition:var(--transition-interactive)] hover:-translate-y-1 hover:shadow-md focus-visible:ring-2 motion-reduce:[transition:none] motion-reduce:hover:translate-y-0",

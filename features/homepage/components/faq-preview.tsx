@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { HomeSection } from "@/features/homepage/components/home-section";
 import { faqItems } from "@/features/homepage/data";
+import { getLinkPrefetch } from "@/lib/site-config";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -43,6 +44,7 @@ export function FaqPreview() {
                 {"cta" in item ? (
                   <Link
                     href={item.cta.href}
+                    prefetch={getLinkPrefetch(item.cta.href)}
                     className="text-primary mt-3 inline-flex rounded-sm font-semibold underline-offset-4 hover:underline"
                   >
                     {item.cta.label}

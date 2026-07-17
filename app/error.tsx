@@ -4,7 +4,7 @@ import Link from "next/link";
 import { RotateCcw, Wrench } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { routes } from "@/lib/site-config";
+import { getLinkPrefetch, routes } from "@/lib/site-config";
 
 type ErrorPageProps = {
   error: Error & { digest?: string };
@@ -31,12 +31,14 @@ export default function ErrorPage({ reset }: ErrorPageProps) {
         contact us if the problem persists.
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Button type="button" onClick={reset}>
+        <Button type="button" variant="premiumPrimary" onClick={reset}>
           <RotateCcw aria-hidden="true" />
           Try Again
         </Button>
-        <Button asChild variant="outline">
-          <Link href={routes.contact}>Contact Us</Link>
+        <Button asChild variant="premiumGhost">
+          <Link href={routes.contact} prefetch={getLinkPrefetch(routes.contact)}>
+            Contact Us
+          </Link>
         </Button>
       </div>
     </section>

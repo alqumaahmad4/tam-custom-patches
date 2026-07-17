@@ -198,7 +198,7 @@ function SearchEmptyState({ onSelect }: { onSelect: (query: string) => void }) {
           <button
             key={term}
             type="button"
-            className="border-border hover:bg-secondary min-h-11 rounded-full border px-4 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
+            className="border-border hover:bg-secondary min-h-11 rounded-md border px-4 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
             onClick={() => onSelect(term)}
           >
             {term}
@@ -234,7 +234,7 @@ function SearchNoResults({
           <button
             key={link.href}
             type="button"
-            className="border-border hover:bg-secondary min-h-11 rounded-full border px-4 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
+            className="border-border hover:bg-secondary min-h-11 rounded-md border px-4 text-sm font-medium transition-colors duration-150 focus-visible:outline-none"
             onClick={() => onSelect(link.label)}
           >
             {link.label}

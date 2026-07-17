@@ -95,6 +95,18 @@ describe("homepage foundation", () => {
   it("renders category, FAQ, and CTA links accessibly", () => {
     render(<Home />);
 
+    const hero = screen
+      .getByRole("heading", { level: 1, name: "Custom Patches Made Easy" })
+      .closest("section");
+
+    expect(hero).not.toBeNull();
+    expect(within(hero as HTMLElement).getByRole("link", { name: "Get a Quote" })).toHaveClass(
+      "premium-button-primary",
+    );
+    expect(
+      within(hero as HTMLElement).getByRole("link", { name: "View Featured Categories" }),
+    ).toHaveClass("premium-button-outline");
+
     for (const category of featuredCategories) {
       expect(screen.getByRole("link", { name: `${category.title} category` })).toHaveAttribute(
         "href",
@@ -111,12 +123,20 @@ describe("homepage foundation", () => {
       .closest("section");
 
     expect(finalCta).not.toBeNull();
-    expect(
-      within(finalCta as HTMLElement).getByRole("link", { name: "Get a Quote" }),
-    ).toHaveAttribute("href", "/quote");
-    expect(screen.getByRole("link", { name: /talk to support/i })).toHaveAttribute(
-      "href",
-      "/contact",
-    );
+    const finalQuoteLink = within(finalCta as HTMLElement).getByRole("link", {
+      name: "Get a Quote",
+    });
+    const supportLink = screen.getByRole("link", { name: /talk to support/i });
+
+    expect(finalQuoteLink).toHaveAttribute("href", "/quote");
+    expect(finalQuoteLink).toHaveClass("premium-button-primary");
+    expect(finalQuoteLink).not.toHaveClass("rounded-full");
+    expect(supportLink).toHaveAttribute("href", "/contact");
+    expect(supportLink).toHaveClass("premium-button-outline");
+    expect(supportLink).not.toHaveClass("rounded-full");
+
+    for (const readPreviewLink of screen.getAllByRole("link", { name: /read preview/i })) {
+      expect(readPreviewLink).not.toHaveClass("premium-button");
+    }
   });
 });
